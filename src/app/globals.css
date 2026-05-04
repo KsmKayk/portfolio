@@ -474,11 +474,11 @@ body {
   background-size: 24px 24px; opacity: 0.6; pointer-events: none;
 }
 .biz-left { padding: 22px 20px; display: flex; flex-direction: column; justify-content: center; gap: 14px; position: relative; z-index: 1; }
-.biz-tag { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
-.biz-name { font-family: var(--font-space-grotesk), system-ui, sans-serif; font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--text); margin-top: 14px; }
-.biz-role { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px; }
+.biz-tag { position: absolute; top: 22px; left: 20px; font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.biz-name { font-family: var(--font-space-grotesk), system-ui, sans-serif; font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--text); }
+.biz-role { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
 .biz-role::before { content: '> '; }
-.biz-stack { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 14px; }
+.biz-stack { display: flex; flex-wrap: wrap; gap: 4px; }
 .biz-stack span { font-size: 9px; padding: 3px 7px; border: 1px solid var(--border-strong); color: var(--text-dim); }
 .biz-divider { position: relative; width: 24px; display: flex; align-items: center; justify-content: center; }
 .biz-divider-line { width: 2px; height: 80%; background: var(--accent); box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-glow); transform: skewX(-12deg); }

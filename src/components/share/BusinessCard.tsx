@@ -8,14 +8,12 @@ export function BusinessCard({ cardRef }: Props) {
       <div className="biz-grid-bg" />
       <div className="biz-left">
         <div className="biz-tag">// dev_card.png</div>
-        <div>
-          <div className="biz-name">Kayk<br />Mascarenhas</div>
-          <div className="biz-role">programador full stack</div>
-          <div className="biz-stack">
-            <span>node.js</span>
-            <span>typescript</span>
-            <span>python</span>
-          </div>
+        <div className="biz-name">Kayk<br />Mascarenhas</div>
+        <div className="biz-role">programador full stack</div>
+        <div className="biz-stack">
+          <span>node.js</span>
+          <span>typescript</span>
+          <span>python</span>
         </div>
       </div>
       <div className="biz-divider">
