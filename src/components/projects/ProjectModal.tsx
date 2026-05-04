@@ -74,7 +74,7 @@ export function ProjectModal({ project, onClose }: Props) {
           </div>
           <div style={{ display: 'flex', gap: 12, marginTop: 8, flexWrap: 'wrap' }}>
             <LinkButton as="a" variant="primary" href="#contato" onClick={onClose}>Falar sobre projeto</LinkButton>
-            <LinkButton as="a" variant="ghost" href="#">Ver código</LinkButton>
+            <LinkButton as="a" variant="ghost" href={project.link} target="_blank" rel="noopener noreferrer">Ver código</LinkButton>
           </div>
         </div>
       </div>

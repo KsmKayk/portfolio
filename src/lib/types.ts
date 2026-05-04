@@ -7,6 +7,7 @@ export interface Project {
   tech: string[];
   slides: SlideKind[];
   images: string[];
+  link: string;
 }
 
 export type SlideKind =
