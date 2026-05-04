@@ -13,7 +13,7 @@ export function Footer() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand">
-              <div className="logo">kayk</div>
+              <div className="logo">Kayk Mascarenhas</div>
               <p>Desenvolvedor full stack — transformando ideias em sistemas que geram resultado real.</p>
               <button className="share-btn" onClick={() => setShareOpen(true)}>
                 <FiShare2 size={14} />

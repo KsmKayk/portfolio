@@ -12,7 +12,7 @@ export function Navbar() {
   return (
     <nav className="nav">
       <div className="nav-inner">
-        <div className="logo">kayk</div>
+        <div className="logo">Kayk</div>
         <ul className={`nav-links ${navOpen ? 'open' : ''}`}>
           {[
             ['sobre', '#sobre'], ['projetos', '#projetos'],
