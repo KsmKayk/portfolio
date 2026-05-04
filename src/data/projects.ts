@@ -9,6 +9,7 @@ export const PROJECTS: Project[] = [
     longDesc: 'Site institucional desenvolvido para uma agência de consultoria em automação. Foco em performance, SEO e narrativa visual sobre como LLMs podem ser aplicadas para resolver problemas reais de negócio. Deploy no GitHub Pages com pipeline de build automatizado.',
     tech: ['Next.js', 'TypeScript', 'TailwindCSS', 'GitHub Pages'],
     slides: ['hero', 'features', 'pricing', 'mobile'],
+    images: ["/projects/p2a/p2a.png", "/projects/p2a/site-gif.gif", "/projects/p2a/design.gif"]
   },
   {
     id: 'omnigen',
@@ -18,6 +19,7 @@ export const PROJECTS: Project[] = [
     longDesc: 'Pipeline completo de geração de vídeo a partir de um único prompt. Integra OpenRouter para roteiro, APIs de busca de imagens, ffmpeg para composição e Piper TTS para narração natural — tudo orquestrado em uma fila assíncrona com retry e cache.',
     tech: ['Python', 'OpenRouter', 'FFmpeg', 'Piper TTS'],
     slides: ['terminal', 'video', 'queue', 'output'],
+    images: ["/projects/omnigen/home.png", "/projects/omnigen/historico.png", "/projects/omnigen/logs.png"]
   },
   {
     id: 'sodden',
@@ -27,5 +29,6 @@ export const PROJECTS: Project[] = [
     longDesc: 'Bot full-featured para servidores de Discord: tocar de YouTube/Spotify/SoundCloud, filas, playlists salvas, controles de volume e equalizador, comandos slash e suporte a múltiplos servidores simultâneos. Construído com discord.js v14 e DisTube.',
     tech: ['Node.js', 'discord.js', 'DisTube', 'TypeScript'],
     slides: ['discord', 'commands', 'embed'],
+    images: ["/projects/sodden/readme.png"]
   },
 ];

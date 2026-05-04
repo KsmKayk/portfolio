@@ -6,6 +6,7 @@ export interface Project {
   longDesc: string;
   tech: string[];
   slides: SlideKind[];
+  images: string[];
 }
 
 export type SlideKind =
