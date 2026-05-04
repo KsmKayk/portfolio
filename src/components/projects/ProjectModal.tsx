@@ -1,22 +1,25 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { Project } from '@/lib/types';
-import { SlidePreview } from './SlidePreview';
 import { LinkButton } from '@/components/ui/Button';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 
 interface Props { project: Project | null; onClose: () => void; }
 
+const isGif = (src: string) => src.toLowerCase().endsWith('.gif');
+
 export function ProjectModal({ project, onClose }: Props) {
   const [slideIdx, setSlideIdx] = useState(0);
+  const total = project?.images.length ?? 0;
 
   useEffect(() => {
     if (!project) return;
     setSlideIdx(0);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') setSlideIdx(i => (i + 1) % project.slides.length);
-      if (e.key === 'ArrowLeft') setSlideIdx(i => (i - 1 + project.slides.length) % project.slides.length);
+      if (e.key === 'ArrowRight') setSlideIdx(i => (i + 1) % project.images.length);
+      if (e.key === 'ArrowLeft') setSlideIdx(i => (i - 1 + project.images.length) % project.images.length);
     };
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
@@ -28,8 +31,9 @@ export function ProjectModal({ project, onClose }: Props) {
 
   if (!project) return null;
 
-  const prev = () => setSlideIdx(i => (i - 1 + project.slides.length) % project.slides.length);
-  const next = () => setSlideIdx(i => (i + 1) % project.slides.length);
+  const prev = () => setSlideIdx(i => (i - 1 + total) % total);
+  const next = () => setSlideIdx(i => (i + 1) % total);
+  const filename = project.images[slideIdx]?.split('/').pop() ?? '';
 
   return (
     <div className={`modal-backdrop ${project ? 'open' : ''}`} onClick={onClose}>
@@ -40,17 +44,28 @@ export function ProjectModal({ project, onClose }: Props) {
           <h3>{project.name}</h3>
         </div>
         <div className="modal-carousel">
-          <div className="carousel-tag">{project.slides[slideIdx]}.{slideIdx === 1 ? 'mp4' : 'png'}</div>
-          <div className="carousel-counter">{slideIdx + 1} / {project.slides.length}</div>
+          <div className="carousel-tag">{filename}</div>
+          <div className="carousel-counter">{slideIdx + 1} / {total}</div>
           <div className="carousel-track" style={{ transform: `translateX(-${slideIdx * 100}%)` }}>
-            {project.slides.map((kind, i) => (
+            {project.images.map((src, i) => (
               <div key={i} className="carousel-slide">
-                <SlidePreview kind={kind} />
+                <Image
+                  src={src}
+                  alt={`${project.name} — ${i + 1}`}
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  unoptimized={isGif(src)}
+                  priority={i === 0}
+                />
               </div>
             ))}
           </div>
-          <button className="carousel-arrow prev" onClick={prev}>&#8249;</button>
-          <button className="carousel-arrow next" onClick={next}>&#8250;</button>
+          {total > 1 && (
+            <>
+              <button className="carousel-arrow prev" onClick={prev}>&#8249;</button>
+              <button className="carousel-arrow next" onClick={next}>&#8250;</button>
+            </>
+          )}
         </div>
         <div className="modal-body">
           <p>{project.longDesc}</p>

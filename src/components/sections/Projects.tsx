@@ -1,14 +1,12 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 import { Project } from '@/lib/types';
 import { PROJECTS } from '@/data/projects';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { ProjectModal } from '@/components/projects/ProjectModal';
-import { SlidePreview } from '@/components/projects/SlidePreview';
 
-const THUMB_SLIDE: Record<string, 'hero' | 'queue' | 'discord'> = {
-  p2a: 'hero', omnigen: 'queue', sodden: 'discord',
-};
+const isGif = (src: string) => src.toLowerCase().endsWith('.gif');
 
 export function Projects() {
   const [active, setActive] = useState<Project | null>(null);
@@ -26,7 +24,13 @@ export function Projects() {
           {PROJECTS.map(p => (
             <button key={p.id} className="project-card" onClick={() => setActive(p)}>
               <div className="project-thumb">
-                <SlidePreview kind={THUMB_SLIDE[p.id] ?? 'hero'} />
+                <Image
+                  src={p.images[0]}
+                  alt={p.name}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  unoptimized={isGif(p.images[0])}
+                />
               </div>
               <div className="project-body">
                 <div style={{ fontFamily: 'var(--font-fira-code), monospace', fontSize: 11, color: 'var(--accent)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
