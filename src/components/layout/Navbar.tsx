@@ -15,8 +15,8 @@ export function Navbar() {
         <a className="logo" href="#" aria-label="Voltar ao topo">kayk</a>
         <ul className={`nav-links ${navOpen ? 'open' : ''}`}>
           {[
-            ['sobre', '#sobre'], ['projetos', '#projetos'],
-            ['stack', '#stack'], ['contato', '#contato'],
+            ['sobre', '#sobre'],['stack', '#stack'], ['projetos', '#projetos'],
+             ['contato', '#contato'],
           ].map(([label, href]) => (
             <li key={href}>
               <a href={href} onClick={() => setNavOpen(false)}>{label}</a>
