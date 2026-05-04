@@ -473,7 +473,7 @@ body {
   background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 24px 24px; opacity: 0.6; pointer-events: none;
 }
-.biz-left { padding: 22px 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 1; }
+.biz-left { padding: 22px 20px; display: flex; flex-direction: column; justify-content: center; gap: 14px; position: relative; z-index: 1; }
 .biz-tag { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 .biz-name { font-family: var(--font-space-grotesk), system-ui, sans-serif; font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--text); margin-top: 14px; }
 .biz-role { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px; }

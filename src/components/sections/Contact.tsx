@@ -1,16 +1,20 @@
 'use client';
-import { useState, FormEvent } from 'react';
+import { FormEvent } from 'react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { Button } from '@/components/ui/Button';
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 5000);
-    (e.target as HTMLFormElement).reset();
+    const form = e.target as HTMLFormElement;
+    const nome = (form.elements.namedItem('nome') as HTMLInputElement).value;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+    const projeto = (form.elements.namedItem('projeto') as HTMLTextAreaElement).value;
+
+    const msg = `Olá Kayk! 👋\n\n*Nome:* ${nome}\n*Email:* ${email}\n\n*Projeto:*\n${projeto}`;
+    window.open(`https://wa.me/5521995518027?text=${encodeURIComponent(msg)}`, '_blank');
+    form.reset();
   };
 
   return (
@@ -43,11 +47,6 @@ export function Contact() {
             <Button variant="primary" type="submit" style={{ width: '100%', justifyContent: 'center' }}>
               enviar mensagem
             </Button>
-            {sent && (
-              <div className="form-success">
-                {'> '}mensagem enviada com sucesso. retorno em breve.
-              </div>
-            )}
           </form>
         </div>
       </div>
