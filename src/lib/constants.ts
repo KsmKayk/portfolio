@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://kaykmascarenhas.dev';
+export const SITE_URL = 'https://ksmkayk.com.br';
 export const SHARE_TEXT = 'Confira o portfolio do Kayk Mascarenhas — Dev Full Stack';
 
 export const CONTACT = {

@@ -12,7 +12,7 @@ export function Contact() {
     const email = (form.elements.namedItem('email') as HTMLInputElement).value;
     const projeto = (form.elements.namedItem('projeto') as HTMLTextAreaElement).value;
 
-    const msg = `Olá Kayk! 👋\n\n*Nome:* ${nome}\n*Email:* ${email}\n\n*Projeto:*\n${projeto}`;
+    const msg = `Olá Kayk! \n\n*Meu nome é:* ${nome}\n*Email:* ${email}\n\n*E quero falar sobre este rojeto:*\n${projeto}`;
     window.open(`https://wa.me/5521995518027?text=${encodeURIComponent(msg)}`, '_blank');
     form.reset();
   };
