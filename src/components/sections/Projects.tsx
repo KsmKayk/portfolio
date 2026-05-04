@@ -24,13 +24,15 @@ export function Projects() {
           {PROJECTS.map(p => (
             <button key={p.id} className="project-card" onClick={() => setActive(p)}>
               <div className="project-thumb">
-                <Image
-                  src={p.images[0]}
-                  alt={p.name}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  unoptimized={isGif(p.images[0])}
-                />
+                <div className="project-thumb-frame">
+                  <Image
+                    src={p.images[0]}
+                    alt={p.name}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    unoptimized={isGif(p.images[0])}
+                  />
+                </div>
               </div>
               <div className="project-body">
                 <div style={{ fontFamily: 'var(--font-fira-code), monospace', fontSize: 11, color: 'var(--accent)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
