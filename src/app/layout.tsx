@@ -19,6 +19,9 @@ const firaCode = Fira_Code({
 export const metadata: Metadata = {
   title: "Kayk Mascarenhas — Portfolio",
   description: "Desenvolvedor full stack — transformando ideias em sistemas que geram resultado real.",
+  icons: {
+    icon: "/icon.ico",
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -5,7 +5,7 @@ export const PROJECTS: Project[] = [
     id: 'p2a',
     name: 'P2A Consulting',
     tag: 'Landing Page',
-    desc: 'Landing page para uma empresa de automação com o uso das LLMs mais fortes do mercado atual.',
+    desc: 'Landing page para uma empresa de automação com o uso de LLMs.',
     longDesc: 'Site institucional desenvolvido para uma agência de consultoria em automação. Foco em performance, SEO e narrativa visual sobre como LLMs podem ser aplicadas para resolver problemas reais de negócio. Deploy no GitHub Pages com pipeline de build automatizado.',
     tech: ['Next.js', 'TypeScript', 'TailwindCSS', 'GitHub Pages'],
     slides: ['hero', 'features', 'pricing', 'mobile'],
