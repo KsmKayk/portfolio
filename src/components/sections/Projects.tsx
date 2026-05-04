@@ -25,13 +25,15 @@ export function Projects() {
             <button key={p.id} className="project-card" onClick={() => setActive(p)}>
               <div className="project-thumb">
                 <div className="project-thumb-frame">
-                  <Image
-                    src={p.images[0]}
-                    alt={p.name}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    unoptimized={isGif(p.images[0])}
-                  />
+                  <div style={{ position: 'absolute', inset: 2 }}>
+                    <Image
+                      src={p.images[0]}
+                      alt={p.name}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      unoptimized={isGif(p.images[0])}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="project-body">
