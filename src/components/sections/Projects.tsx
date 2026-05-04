@@ -30,7 +30,7 @@ export function Projects() {
                       src={p.images[0]}
                       alt={p.name}
                       fill
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'cover', objectPosition: 'top' }}
                       unoptimized={isGif(p.images[0])}
                     />
                   </div>
