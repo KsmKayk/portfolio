@@ -30,7 +30,7 @@ export function Projects() {
               </div>
               <div className="project-body">
                 <div style={{ fontFamily: 'var(--font-fira-code), monospace', fontSize: 11, color: 'var(--accent)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  // {p.tag}
+                  {p.tag}
                 </div>
                 <div className="project-title">{p.name}</div>
                 <div className="project-desc">{p.desc}</div>
