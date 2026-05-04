@@ -1,4 +1,5 @@
 import { SectionLabel } from '@/components/ui/SectionLabel';
+import Image from 'next/image';
 
 export function About() {
   return (
@@ -7,7 +8,10 @@ export function About() {
         <SectionLabel>sobre mim</SectionLabel>
         <div className="about-grid">
           <div className="about-card">
-            <div className="avatar"><span>KM</span></div>
+            
+            <div className="avatar">
+              <Image src="/me.jpg" alt="Kayk Mascarenhas" fill style={{ objectFit: 'cover' }} />
+            </div>
             <div style={{
               marginTop: 14,
               fontFamily: 'var(--font-fira-code), monospace',
