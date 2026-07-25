@@ -11,8 +11,9 @@ export const metadata: Metadata = {
 export default function LandingPages() {
   return (
     <>
-      <Navbar />
-      <main>
+      <div className="lp-page">
+        <Navbar />
+        <main>
         <section className="lp-section">
           <div className="container">
             <span className="section-label">landing pages</span>
@@ -44,6 +45,7 @@ export default function LandingPages() {
         </section>
       </main>
       <Footer />
+      </div>
     </>
   );
 }
