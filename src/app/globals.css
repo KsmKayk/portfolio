@@ -536,7 +536,7 @@ body {
   display: flex; align-items: center; justify-content: center;
 }
 .lp-thumb-logo {
-  width: 80%; height: auto; opacity: 1; filter: brightness(100%);
+  width: 80%; height: auto; opacity: 0.9; filter: brightness(100%);
 }
 .lp-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
 .lp-card-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em; }
