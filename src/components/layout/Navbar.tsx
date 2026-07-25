@@ -12,11 +12,11 @@ export function Navbar() {
   return (
     <nav className="nav">
       <div className="nav-inner">
-        <a className="logo" href="#" aria-label="Voltar ao topo">kayk</a>
+        <a className="logo" href="/" aria-label="Voltar ao topo">kayk</a>
         <ul className={`nav-links ${navOpen ? 'open' : ''}`}>
           {[
-            ['sobre', '#sobre'],['stack', '#stack'], ['projetos', '#projetos'],
-             ['landing pages', '/landing-pages'], ['contato', '#contato'],
+            ['sobre', '/#sobre'],['stack', '/#stack'], ['projetos', '/#projetos'],
+             ['landing pages', '/landing-pages'], ['contato', '/#contato'],
           ].map(([label, href]) => (
             <li key={href}>
               <a href={href} onClick={() => setNavOpen(false)}>{label}</a>
@@ -27,7 +27,7 @@ export function Navbar() {
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Alternar tema">
             {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
           </button>
-          <LinkButton as="a" variant="primary" href="#contato" style={{ display: 'inline-flex' }}>
+          <LinkButton as="a" variant="primary" href="/#contato" style={{ display: 'inline-flex' }}>
             contato
           </LinkButton>
           <button className="mobile-menu-btn" onClick={() => setNavOpen(o => !o)}>
