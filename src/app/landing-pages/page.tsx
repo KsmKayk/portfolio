@@ -26,6 +26,9 @@ export default function LandingPages() {
                 <a key={lp.slug} href={lp.url} className="lp-card">
                   <div className="lp-thumb">
                     <img src={lp.thumbnail} alt={lp.title} loading="lazy" />
+                    <div className="lp-thumb-overlay">
+                      <img src={lp.logo} alt="" className="lp-thumb-logo" />
+                    </div>
                   </div>
                   <div className="lp-body">
                     <h2 className="lp-card-title">{lp.title}</h2>

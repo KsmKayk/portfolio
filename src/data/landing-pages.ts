@@ -3,6 +3,7 @@ export interface LandingPage {
   title: string;
   desc: string;
   thumbnail: string;
+  logo: string;
   url: string;
 }
 
@@ -12,6 +13,7 @@ export const landingPages: LandingPage[] = [
     title: 'Barbearia Bellos',
     desc: 'Landing page completa para barbearia com agendamento via WhatsApp, cardápio de serviços, galeria e localização.',
     thumbnail: '/landing-pages/bellos/mrzf1jkv-resultado1.jpg',
+    logo: '/landing-pages/bellos/mrzga072-logoa.svg',
     url: '/landing-pages/bellos',
   },
 ];
