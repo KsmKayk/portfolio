@@ -16,7 +16,7 @@ export function Navbar() {
         <ul className={`nav-links ${navOpen ? 'open' : ''}`}>
           {[
             ['sobre', '/#sobre'],['stack', '/#stack'], ['projetos', '/#projetos'],
-             ['landing pages', '/landing-pages'], ['contato', '/#contato'],
+            ['contato', '/#contato'], //['landing pages', '/landing-pages'], 
           ].map(([label, href]) => (
             <li key={href}>
               <a href={href} onClick={() => setNavOpen(false)}>{label}</a>
