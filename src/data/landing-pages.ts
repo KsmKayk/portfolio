@@ -16,4 +16,12 @@ export const landingPages: LandingPage[] = [
     logo: '/landing-pages/bellos/mrzga072-logoaw.svg',
     url: '/landing-pages/bellos',
   },
+  {
+    slug: 'imperiofit',
+    title: 'Academia ImperioFit',
+    desc: 'Landing page para academia com planos e preços, galeria, modalidades e agendamento via WhatsApp.',
+    thumbnail: '/landing-pages/imperiofit/msalpap9-SaveClip.App_591146948_18515541349070282_1391715519757477742_n.jpg',
+    logo: '/landing-pages/imperiofit/msalpaqd-logo.png',
+    url: '/landing-pages/imperiofit',
+  },
 ];
