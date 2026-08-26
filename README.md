@@ -2,6 +2,12 @@
 
 Personal developer portfolio built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4.
 
+## Preview
+
+![Portfolio home page](public/screenshots/home.png)
+
+![Projects section](public/screenshots/projects.png)
+
 ## Tech Stack
 
 - **Framework:** Next.js 16 (App Router)
