@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Archivo+Black&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <style>
   :root {
     --rfy-bg: #0C0B0B;
@@ -656,6 +657,180 @@
         ticking = false;
       });
     }, { passive: true });
+  }
+
+  const SHADER_VERTEX = [
+    'varying vec2 vUv;',
+    'void main() {',
+    '  vUv = uv;',
+    '  gl_Position = vec4(position.xy, 0.0, 1.0);',
+    '}'
+  ].join('\n');
+
+  const SHADER_FRAGMENT = [
+    'precision highp float;',
+    'varying vec2 vUv;',
+    'uniform float uTime;',
+    'uniform vec2 uResolution;',
+    'uniform vec2 uMouse;',
+    'uniform float uHover;',
+    'uniform float uRippleTime;',
+    'uniform vec2 uRippleOrigin;',
+    'uniform float uMode;',
+    'uniform sampler2D uTexture;',
+    'uniform vec3 uColorA;',
+    'uniform vec3 uColorB;',
+    'uniform vec3 uColorC;',
+    'uniform float uReducedMotion;',
+    '',
+    'float hash(vec2 p) {',
+    '  p = fract(p * vec2(123.34, 456.21));',
+    '  p += dot(p, p + 45.32);',
+    '  return fract(p.x * p.y);',
+    '}',
+    'float noise(vec2 p) {',
+    '  vec2 i = floor(p), f = fract(p);',
+    '  float a = hash(i), b = hash(i + vec2(1.0, 0.0));',
+    '  float c = hash(i + vec2(0.0, 1.0)), d = hash(i + vec2(1.0, 1.0));',
+    '  vec2 u = f * f * (3.0 - 2.0 * f);',
+    '  return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;',
+    '}',
+    'float fbm(vec2 p) {',
+    '  float v = 0.0, amp = 0.55;',
+    '  for (int i = 0; i < 3; i++) {',
+    '    v += amp * noise(p);',
+    '    p *= 2.0;',
+    '    amp *= 0.5;',
+    '  }',
+    '  return v;',
+    '}',
+    'float bayerDither(vec2 fragCoord) {',
+    '  int x = int(mod(fragCoord.x, 4.0));',
+    '  int y = int(mod(fragCoord.y, 4.0));',
+    '  float m[16];',
+    '  m[0]=0.0; m[1]=8.0; m[2]=2.0; m[3]=10.0;',
+    '  m[4]=12.0; m[5]=4.0; m[6]=14.0; m[7]=6.0;',
+    '  m[8]=3.0; m[9]=11.0; m[10]=1.0; m[11]=9.0;',
+    '  m[12]=15.0; m[13]=7.0; m[14]=13.0; m[15]=5.0;',
+    '  return m[y * 4 + x] / 16.0;',
+    '}',
+    '',
+    'void main() {',
+    '  vec2 uv = vUv;',
+    '  vec2 aspect = vec2(uResolution.x / uResolution.y, 1.0);',
+    '  float distToMouse = distance(uv * aspect, uMouse * aspect);',
+    '  float lens = uHover * smoothstep(0.35, 0.0, distToMouse);',
+    '  float dt = uTime - uRippleTime;',
+    '  float rippleEnvelope = uReducedMotion > 0.5 ? 0.0 : exp(-dt * 1.6) * step(0.0, dt);',
+    '  float distToRipple = distance(uv * aspect, uRippleOrigin * aspect);',
+    '  float ripple = sin(distToRipple * 40.0 - dt * 6.0) * rippleEnvelope * smoothstep(0.6, 0.0, distToRipple);',
+    '  float baseGrid = mix(28.0, 64.0, lens);',
+    '  vec2 grid = vec2(baseGrid * aspect.x, baseGrid);',
+    '  vec2 rippledUv = uv + normalize(uv - uRippleOrigin + 1e-5) * ripple * 0.01;',
+    '  vec2 cell = floor(rippledUv * grid);',
+    '  vec2 cellUv = fract(rippledUv * grid);',
+    '  vec2 cellCenterUv = (cell + 0.5) / grid;',
+    '  float lum;',
+    '  if (uMode > 0.5) {',
+    '    lum = dot(texture2D(uTexture, cellCenterUv).rgb, vec3(0.299, 0.587, 0.114));',
+    '  } else {',
+    '    lum = fbm(cellCenterUv * 6.0 + uTime * 0.02 * (1.0 - uReducedMotion));',
+    '  }',
+    '  float contrast = 1.35;',
+    '  lum = clamp((lum - 0.5) * contrast + 0.5, 0.0, 1.0);',
+    '  lum = clamp(lum + ripple * 0.15, 0.0, 1.0);',
+    '  float dotRadius = mix(lum * 0.42, lum * 0.48 + 0.04, lens);',
+    '  float dist = distance(cellUv, vec2(0.5));',
+    '  float dotShape = smoothstep(dotRadius + 0.04, dotRadius, dist);',
+    '  float threshold = bayerDither(gl_FragCoord.xy);',
+    '  float dithered = step(threshold, dotShape);',
+    '  vec3 color = mix(uColorA, uColorB, dithered);',
+    '  float accentMix = dithered * smoothstep(0.72, 1.0, lum) * mix(0.15, 0.6, lens);',
+    '  color = mix(color, uColorC, accentMix);',
+    '  gl_FragColor = vec4(color, 1.0);',
+    '}'
+  ].join('\n');
+
+  function hexToVec3(hex) {
+    const c = new THREE.Color(hex);
+    return c;
+  }
+
+  class ShaderPanel {
+    constructor(opts) {
+      this.canvas = opts.canvas;
+      this.visible = true;
+      this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, alpha: true, antialias: false });
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      this.scene = new THREE.Scene();
+      this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+      this.uniforms = {
+        uTime: { value: 0 },
+        uResolution: { value: new THREE.Vector2(1, 1) },
+        uMouse: { value: new THREE.Vector2(0.5, 0.5) },
+        uHover: { value: 0 },
+        uRippleTime: { value: -1000 },
+        uRippleOrigin: { value: new THREE.Vector2(0.5, 0.5) },
+        uMode: { value: opts.mode === 'photo' ? 1 : 0 },
+        uTexture: { value: opts.texture || null },
+        uColorA: { value: hexToVec3(opts.colorA) },
+        uColorB: { value: hexToVec3(opts.colorB) },
+        uColorC: { value: hexToVec3(opts.colorC) },
+        uReducedMotion: { value: prefersReducedMotion ? 1 : 0 }
+      };
+      const material = new THREE.ShaderMaterial({
+        uniforms: this.uniforms,
+        vertexShader: SHADER_VERTEX,
+        fragmentShader: SHADER_FRAGMENT,
+        transparent: true
+      });
+      this.scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material));
+      this.resize();
+    }
+
+    resize() {
+      const rect = this.canvas.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+      this.renderer.setSize(rect.width, rect.height, false);
+      this.uniforms.uResolution.value.set(rect.width, rect.height);
+    }
+
+    setMouse(nx, ny) { this.uniforms.uMouse.value.set(nx, ny); }
+    ping(nx, ny, timeNow) {
+      this.uniforms.uRippleOrigin.value.set(nx, ny);
+      this.uniforms.uRippleTime.value = timeNow;
+    }
+    render(timeNow) {
+      if (!this.visible) return;
+      this.uniforms.uTime.value = timeNow;
+      this.renderer.render(this.scene, this.camera);
+    }
+  }
+
+  const shaderPanels = [];
+  try {
+    if (!window.THREE) throw new Error('three.js failed to load from CDN');
+    const loader = new THREE.TextureLoader();
+    const heroTexture = loader.load('uploads/Gemini_Generated_Image_u1wpswu1wpswu1wp.png');
+    heroTexture.minFilter = THREE.LinearFilter;
+    heroTexture.magFilter = THREE.LinearFilter;
+
+    const heroCanvas = document.getElementById('rfy-canvas-hero');
+    const heroPanel = new ShaderPanel({
+      canvas: heroCanvas, mode: 'photo', texture: heroTexture,
+      colorA: '#0C0B0B', colorB: '#EFE9E0', colorC: '#EA3B21'
+    });
+    heroCanvas.classList.add('is-active');
+    shaderPanels.push(heroPanel);
+
+    function renderAllPanels() {
+      const now = performance.now() / 1000;
+      shaderPanels.forEach((p) => p.render(now));
+      requestAnimationFrame(renderAllPanels);
+    }
+    requestAnimationFrame(renderAllPanels);
+  } catch (err) {
+    console.warn('Rock For You: shader textures disabled —', err.message);
   }
 
   // RFY:SCRIPT:INSERT
