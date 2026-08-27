@@ -640,15 +640,19 @@
   });
 
   if (!prefersReducedMotion) {
+    function updateHeroParallax() {
+      const heroSection = document.getElementById('top');
+      const rect = heroSection.getBoundingClientRect();
+      const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
+      document.getElementById('rfy-hero-bg').style.transform = 'translateY(' + (progress * 12) + '%)';
+    }
+    updateHeroParallax();
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        const heroSection = document.getElementById('top');
-        const rect = heroSection.getBoundingClientRect();
-        const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
-        document.getElementById('rfy-hero-bg').style.transform = 'translateY(' + (progress * 12) + '%)';
+        updateHeroParallax();
         ticking = false;
       });
     }, { passive: true });
