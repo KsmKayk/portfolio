@@ -600,8 +600,8 @@
   ];
   document.getElementById('rfy-goods-grid').innerHTML = GOODS.map((g) => (
     '<div class="rfy-goods-item">' +
-      '<div class="rfy-goods-item-name">' + g.name + '</div>' +
-      '<div class="rfy-goods-item-note">' + g.note + '</div>' +
+      '<div class="rfy-goods-item-name">' + esc(g.name) + '</div>' +
+      '<div class="rfy-goods-item-note">' + esc(g.note) + '</div>' +
     '</div>'
   )).join('');
 
