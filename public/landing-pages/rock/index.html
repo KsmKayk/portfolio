@@ -388,17 +388,22 @@
   };
   let activeCat = 'pop';
   const track = document.getElementById('rfy-track');
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
   function renderCatalog(cat) {
     activeCat = cat;
     track.innerHTML = CATALOG[cat].map((item) => (
       '<article class="rfy-card">' +
         '<div class="rfy-card-img-wrap">' +
-          '<img src="' + item.img + '" alt="' + item.name + '" loading="lazy" />' +
-          '<span class="rfy-card-tag">' + item.tag + '</span>' +
+          '<img src="' + item.img + '" alt="' + esc(item.name) + '" loading="lazy" />' +
+          '<span class="rfy-card-tag">' + esc(item.tag) + '</span>' +
         '</div>' +
         '<div class="rfy-card-body">' +
-          '<h3 class="rfy-card-title">' + item.name + '</h3>' +
-          '<p class="rfy-card-note">' + item.note + '</p>' +
+          '<h3 class="rfy-card-title">' + esc(item.name) + '</h3>' +
+          '<p class="rfy-card-note">' + esc(item.note) + '</p>' +
           '<a href="' + waLink('Oi! Vi “' + item.name + '” no site da Rock For You e quero saber mais.') + '" target="_blank" rel="noreferrer" class="rfy-card-link">Consultar →</a>' +
         '</div>' +
       '</article>'
