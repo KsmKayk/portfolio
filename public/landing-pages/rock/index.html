@@ -76,6 +76,64 @@
   .rfy-footer-link { color: rgba(239, 233, 224, 0.7); transition: color 0.15s ease; }
   .rfy-footer-link:hover { color: var(--rfy-accent); }
 
+  .rfy-hero {
+    position: relative; overflow: hidden;
+    padding: 96px 20px 84px;
+    border-bottom: 1px solid rgba(239, 233, 224, 0.13);
+  }
+  .rfy-hero-bg {
+    position: absolute; inset: -8% 0; width: 100%; height: 116%;
+    object-fit: cover; opacity: 0.2;
+    filter: grayscale(1) contrast(1.1) brightness(0.5);
+    will-change: transform;
+  }
+  .rfy-hero-canvas {
+    position: absolute; inset: -8% 0; width: 100%; height: 116%;
+    display: none; pointer-events: none;
+  }
+  .rfy-hero-canvas.is-active { display: block; }
+  .rfy-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(12, 11, 11, 0.94) 0%, rgba(12, 11, 11, 0.82) 46%, rgba(12, 11, 11, 0.6) 100%);
+  }
+  .rfy-hero-inner { position: relative; max-width: 1180px; margin: 0 auto; }
+  .rfy-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--rfy-accent);
+  }
+  .rfy-hero-title {
+    margin: 12px 0 0; font-family: var(--rfy-font-display); font-weight: 400;
+    font-size: clamp(38px, 6.4vw, 76px); line-height: 0.92; letter-spacing: -0.025em;
+    text-transform: uppercase; color: var(--rfy-fg);
+  }
+  .rfy-hero-desc {
+    margin: 16px 0 0; max-width: 440px; font-size: 16px; line-height: 1.5;
+    color: rgba(239, 233, 224, 0.76);
+  }
+  .rfy-hero-ctas { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .rfy-btn-outline {
+    padding: 11px 20px; border: 1px solid rgba(239, 233, 224, 0.3); color: var(--rfy-fg);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    border-radius: 3px; transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .rfy-btn-outline:hover { border-color: var(--rfy-accent); color: var(--rfy-accent); }
+  .rfy-hero-ctas .rfy-btn-primary { padding: 11px 20px; font-size: 13px; }
+  .rfy-hero-meta {
+    display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 22px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(239, 233, 224, 0.5);
+  }
+  [data-hero] { opacity: 0; transform: translateY(26px); animation: rfy-hero-in 0.7s cubic-bezier(.16,1,.3,1) forwards; }
+  [data-hero]:nth-of-type(1) { animation-delay: 0s; }
+  [data-hero]:nth-of-type(2) { animation-delay: 0.09s; }
+  [data-hero]:nth-of-type(3) { animation-delay: 0.18s; }
+  [data-hero]:nth-of-type(4) { animation-delay: 0.27s; }
+  [data-hero]:nth-of-type(5) { animation-delay: 0.36s; }
+  @keyframes rfy-hero-in { to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    [data-hero] { animation: none; opacity: 1; transform: none; }
+  }
+
   /* RFY:STYLES:INSERT */
 </style>
 </head>
@@ -92,6 +150,26 @@
 </header>
 
 <main>
+  <section id="top" class="rfy-hero">
+    <img class="rfy-hero-bg" id="rfy-hero-bg" src="uploads/Gemini_Generated_Image_u1wpswu1wpswu1wp.png" alt="Parede de camisetas de banda na loja Rock For You" />
+    <canvas class="rfy-hero-canvas" id="rfy-canvas-hero"></canvas>
+    <div class="rfy-hero-overlay"></div>
+    <div class="rfy-hero-inner">
+      <div data-hero class="rfy-eyebrow">Loja física · Duque de Caxias / RJ</div>
+      <h1 data-hero class="rfy-hero-title">Rock <span class="rfy-star" style="font-size: 0.5em;">✶</span> For You</h1>
+      <p data-hero class="rfy-hero-desc">Camisetas de banda, anime e cultura pop, mangás, pelúcias e colecionáveis. Passe na loja ou reserve a sua peça pelo WhatsApp.</p>
+      <div data-hero class="rfy-hero-ctas">
+        <a href="#" id="rfy-hero-wa" class="rfy-btn-primary" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
+        <a href="#catalogo" class="rfy-btn-outline">Ver o catálogo</a>
+      </div>
+      <div data-hero class="rfy-hero-meta">
+        <span>21 99420-8796</span>
+        <span>@fabiorockforyou</span>
+        <span>Sala 116 · Ed. Cardoso Bessa</span>
+      </div>
+    </div>
+  </section>
+
   <!-- RFY:SECTIONS:INSERT -->
 </main>
 
@@ -112,6 +190,8 @@
   const MAIN_WA_TEXT = 'Oi! Vi o site da Rock For You e quero saber o que tem na loja.';
   document.getElementById('rfy-header-wa').href = waLink(MAIN_WA_TEXT);
   document.getElementById('rfy-footer-wa').href = waLink(MAIN_WA_TEXT);
+
+  document.getElementById('rfy-hero-wa').href = waLink(MAIN_WA_TEXT);
 
   // RFY:SCRIPT:INSERT
 </script>
