@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rock For You — camisetas, mangás e colecionáveis em Duque de Caxias</title>
+<meta name="description" content="Rock For You: camisetas de banda, mangás, pelúcias e colecionáveis em Duque de Caxias/RJ. Catálogo, loja física e WhatsApp (21) 99420-8796." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Archivo+Black&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --rfy-bg: #0C0B0B;
+    --rfy-fg: #EFE9E0;
+    --rfy-accent: #EA3B21;
+    --rfy-accent-2: #F7D9CF;
+    --rfy-font-display: 'Archivo Black', 'Archivo', system-ui, sans-serif;
+    --rfy-font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --rfy-font-serif: 'Instrument Serif', serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--rfy-bg);
+    color: var(--rfy-fg);
+    font: 400 15px/1.5 var(--rfy-font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: var(--rfy-accent); text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  ::-webkit-scrollbar { height: 0; width: 0; }
+  @keyframes rfy-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .rfy-header {
+    position: sticky; top: 0; z-index: 60;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 10px 20px; padding: 10px 20px;
+    background: rgba(12, 11, 11, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(239, 233, 224, 0.13);
+  }
+  .rfy-brand {
+    display: flex; align-items: center; gap: 7px;
+    color: var(--rfy-fg); font-family: var(--rfy-font-display);
+    font-size: 15px; letter-spacing: 0.01em; text-transform: uppercase;
+  }
+  .rfy-star { color: var(--rfy-accent); font-size: 10px; }
+  .rfy-nav {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .rfy-nav-link { color: rgba(239, 233, 224, 0.66); transition: color 0.15s ease; }
+  .rfy-nav-link:hover { color: var(--rfy-fg); }
+  .rfy-btn-primary {
+    padding: 8px 15px; background: var(--rfy-accent); color: var(--rfy-bg);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    border-radius: 3px; white-space: nowrap; transition: background 0.15s ease;
+  }
+  .rfy-btn-primary:hover { background: var(--rfy-fg); }
+
+  .rfy-footer {
+    padding: 26px 20px; border-top: 1px solid rgba(239, 233, 224, 0.13);
+  }
+  .rfy-footer-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 24px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(239, 233, 224, 0.5);
+  }
+  .rfy-footer-brand {
+    display: flex; align-items: center; gap: 6px; color: var(--rfy-fg);
+    font-family: var(--rfy-font-display); letter-spacing: 0.01em;
+  }
+  .rfy-footer-link { color: rgba(239, 233, 224, 0.7); transition: color 0.15s ease; }
+  .rfy-footer-link:hover { color: var(--rfy-accent); }
+
+  /* RFY:STYLES:INSERT */
+</style>
+</head>
+<body>
+
+<header class="rfy-header">
+  <a href="#top" class="rfy-brand">Rock<span class="rfy-star">✶</span>For You</a>
+  <nav class="rfy-nav">
+    <a href="#catalogo" class="rfy-nav-link">Catálogo</a>
+    <a href="#loja" class="rfy-nav-link">A loja</a>
+    <a href="https://instagram.com/fabiorockforyou" target="_blank" rel="noreferrer" class="rfy-nav-link">Instagram</a>
+  </nav>
+  <a href="#" id="rfy-header-wa" class="rfy-btn-primary" target="_blank" rel="noreferrer">WhatsApp</a>
+</header>
+
+<main>
+  <!-- RFY:SECTIONS:INSERT -->
+</main>
+
+<footer class="rfy-footer">
+  <div class="rfy-footer-inner">
+    <span class="rfy-footer-brand">Rock<span class="rfy-star" style="font-size: 9px;">✶</span>For You</span>
+    <a href="#" id="rfy-footer-wa" class="rfy-footer-link" target="_blank" rel="noreferrer">Telefone e WhatsApp: 21 99420-8796</a>
+    <a href="https://instagram.com/fabiorockforyou" target="_blank" rel="noreferrer" class="rfy-footer-link">@fabiorockforyou</a>
+    <span>Marcas e personagens pertencem aos seus titulares</span>
+  </div>
+</footer>
+
+<script>
+  const WA_NUMBER = '5521994208796';
+  function waLink(text) {
+    return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  }
+  const MAIN_WA_TEXT = 'Oi! Vi o site da Rock For You e quero saber o que tem na loja.';
+  document.getElementById('rfy-header-wa').href = waLink(MAIN_WA_TEXT);
+  document.getElementById('rfy-footer-wa').href = waLink(MAIN_WA_TEXT);
+
+  // RFY:SCRIPT:INSERT
+</script>
+</body>
+</html>
