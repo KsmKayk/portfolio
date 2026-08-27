@@ -24,4 +24,12 @@ export const landingPages: LandingPage[] = [
     logo: '/landing-pages/imperiofit/msalpaqd-logo.png',
     url: '/landing-pages/imperiofit',
   },
+  {
+    slug: 'rock',
+    title: 'Rock For You',
+    desc: 'Landing page para loja de camisetas de banda, mangás e colecionáveis, com catálogo filtrável, frase do dia e localização.',
+    thumbnail: '/landing-pages/rock/thumbnail.webp',
+    logo: '/landing-pages/rock/logo.svg',
+    url: '/landing-pages/rock',
+  },
 ];
