@@ -134,6 +134,51 @@
     [data-hero] { animation: none; opacity: 1; transform: none; }
   }
 
+  .rfy-marquee {
+    overflow: hidden; padding: 11px 0 33px;
+    border-bottom: 1px solid rgba(239, 233, 224, 0.13);
+  }
+  .rfy-marquee-track {
+    display: flex; width: max-content; animation: rfy-marquee 30s linear infinite;
+    font-family: var(--rfy-font-display); font-size: 13px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(239, 233, 224, 0.28);
+  }
+  .rfy-marquee-track span { padding-right: 16px; }
+  @media (prefers-reduced-motion: reduce) {
+    .rfy-marquee-track { animation: none; }
+  }
+
+  .rfy-frase {
+    position: relative; z-index: 2; margin: -22px 0; padding: 82px 20px 84px; color: var(--rfy-bg);
+  }
+  .rfy-shape { position: absolute; }
+  .rfy-shape--pink {
+    inset: -14px 0 -10px; background: var(--rfy-accent-2);
+    clip-path: polygon(0% 3.4%, 7% 6%, 14% 2.6%, 21% 5.4%, 29% 1.8%, 37% 4.6%, 44% 1.2%, 52% 4%, 60% 1%, 68% 3.6%, 76% 0.8%, 84% 3.2%, 91% 0.6%, 100% 2.4%, 100% 96.6%, 92% 99.4%, 84% 96.4%, 76% 99.2%, 67% 96.2%, 59% 99%, 50% 96%, 41% 98.8%, 33% 95.8%, 24% 98.6%, 16% 95.6%, 8% 98.4%, 0% 95.4%);
+  }
+  .rfy-shape--orange {
+    inset: 0; background: var(--rfy-accent);
+    clip-path: polygon(0% 6.4%, 5% 3.1%, 11% 5.4%, 17% 2.2%, 24% 4.4%, 31% 1.4%, 38% 3.4%, 45% 0.7%, 52% 2.8%, 59% 0.3%, 66% 2.2%, 73% 0.1%, 81% 1.6%, 88% 0%, 94% 1.2%, 100% 0.2%, 100% 94.4%, 94% 97.6%, 87% 95.2%, 80% 98.2%, 72% 96%, 64% 99%, 56% 96.8%, 48% 99.6%, 40% 97.4%, 32% 100%, 24% 97.6%, 17% 99.8%, 10% 97.4%, 4% 99.4%, 0% 98%);
+  }
+  .rfy-shape-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: none; pointer-events: none; }
+  .rfy-shape-canvas.is-active { display: block; }
+  .rfy-frase-inner { position: relative; max-width: 760px; margin: 0 auto; text-align: center; }
+  .rfy-label-dark { font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(12, 11, 11, 0.6); }
+  .rfy-quote-block { opacity: 0; transform: translateY(10px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .rfy-quote-block.is-in { opacity: 1; transform: translateY(0); }
+  .rfy-quote {
+    margin: 14px 0 0; font-family: var(--rfy-font-serif); font-size: clamp(22px, 2.6vw, 34px);
+    line-height: 1.24;
+  }
+  .rfy-quote-author { margin-top: 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  .rfy-btn-ghost-dark {
+    margin-top: 18px; padding: 7px 14px; background: transparent; border: 1px solid rgba(12, 11, 11, 0.4);
+    border-radius: 3px; color: var(--rfy-bg); font-family: var(--rfy-font-body); font-size: 11px;
+    font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .rfy-btn-ghost-dark:hover { background: var(--rfy-bg); color: var(--rfy-accent); border-color: var(--rfy-bg); }
+
   /* RFY:STYLES:INSERT */
 </style>
 </head>
@@ -170,6 +215,28 @@
     </div>
   </section>
 
+  <div class="rfy-marquee">
+    <div class="rfy-marquee-track">
+      <span>Camisetas ✶ Mangás ✶ Pelúcias ✶ Colecionáveis ✶ Acessórios ✶ Canecas ✶ Camisetas ✶ Mangás ✶ Pelúcias ✶ Colecionáveis ✶ Acessórios ✶ Canecas ✶</span>
+      <span>Camisetas ✶ Mangás ✶ Pelúcias ✶ Colecionáveis ✶ Acessórios ✶ Canecas ✶ Camisetas ✶ Mangás ✶ Pelúcias ✶ Colecionáveis ✶ Acessórios ✶ Canecas ✶</span>
+    </div>
+  </div>
+
+  <section id="frase" class="rfy-frase">
+    <div class="rfy-shape rfy-shape--pink"></div>
+    <canvas class="rfy-shape-canvas" id="rfy-canvas-frase-pink" style="clip-path: polygon(0% 3.4%, 7% 6%, 14% 2.6%, 21% 5.4%, 29% 1.8%, 37% 4.6%, 44% 1.2%, 52% 4%, 60% 1%, 68% 3.6%, 76% 0.8%, 84% 3.2%, 91% 0.6%, 100% 2.4%, 100% 96.6%, 92% 99.4%, 84% 96.4%, 76% 99.2%, 67% 96.2%, 59% 99%, 50% 96%, 41% 98.8%, 33% 95.8%, 24% 98.6%, 16% 95.6%, 8% 98.4%, 0% 95.4%);"></canvas>
+    <div class="rfy-shape rfy-shape--orange"></div>
+    <canvas class="rfy-shape-canvas" id="rfy-canvas-frase-orange" style="clip-path: polygon(0% 6.4%, 5% 3.1%, 11% 5.4%, 17% 2.2%, 24% 4.4%, 31% 1.4%, 38% 3.4%, 45% 0.7%, 52% 2.8%, 59% 0.3%, 66% 2.2%, 73% 0.1%, 81% 1.6%, 88% 0%, 94% 1.2%, 100% 0.2%, 100% 94.4%, 94% 97.6%, 87% 95.2%, 80% 98.2%, 72% 96%, 64% 99%, 56% 96.8%, 48% 99.6%, 40% 97.4%, 32% 100%, 24% 97.6%, 17% 99.8%, 10% 97.4%, 4% 99.4%, 0% 98%);"></canvas>
+    <div data-reveal class="rfy-frase-inner">
+      <div class="rfy-label-dark">Frase do dia</div>
+      <div class="rfy-quote-block" id="rfy-quote-block">
+        <blockquote class="rfy-quote" id="rfy-quote"></blockquote>
+        <div class="rfy-quote-author" id="rfy-quote-author"></div>
+      </div>
+      <button type="button" class="rfy-btn-ghost-dark" id="rfy-shuffle-btn">Outra frase</button>
+    </div>
+  </section>
+
   <!-- RFY:SECTIONS:INSERT -->
 </main>
 
@@ -192,6 +259,31 @@
   document.getElementById('rfy-footer-wa').href = waLink(MAIN_WA_TEXT);
 
   document.getElementById('rfy-hero-wa').href = waLink(MAIN_WA_TEXT);
+
+  const QUOTES = [
+    { t: "Não vou ser uma estrela do rock. Vou ser uma lenda.", a: "Freddie Mercury — Queen" },
+    { t: "Se você acha que está velho demais para o rock'n'roll, então você está.", a: "Lemmy Kilmister — Motörhead" },
+    { t: "Prefiro ser odiado por quem eu sou do que amado por quem eu não sou.", a: "Kurt Cobain — Nirvana" },
+    { t: "De todas as coisas que eu perdi, sinto mais falta da minha cabeça.", a: "Ozzy Osbourne — Black Sabbath" },
+    { t: "Quando o poder do amor superar o amor pelo poder, o mundo conhecerá a paz.", a: "Jimi Hendrix" },
+    { t: "Sem desvio da norma, não existe progresso.", a: "Frank Zappa" },
+    { t: "Dizem que fizemos onze discos que soam iguais. Na verdade, fizemos doze.", a: "Angus Young — AC/DC" },
+    { t: "Ninguém é você, e esse é o seu poder.", a: "Dave Grohl — Foo Fighters" }
+  ];
+  let quoteIndex = Math.floor(Math.random() * QUOTES.length);
+  function renderQuote(i) {
+    const block = document.getElementById('rfy-quote-block');
+    block.classList.remove('is-in');
+    void block.offsetWidth;
+    document.getElementById('rfy-quote').textContent = '“' + QUOTES[i].t + '”';
+    document.getElementById('rfy-quote-author').textContent = QUOTES[i].a;
+    requestAnimationFrame(() => block.classList.add('is-in'));
+  }
+  renderQuote(quoteIndex);
+  document.getElementById('rfy-shuffle-btn').addEventListener('click', () => {
+    quoteIndex = (quoteIndex + 1 + Math.floor(Math.random() * (QUOTES.length - 1))) % QUOTES.length;
+    renderQuote(quoteIndex);
+  });
 
   // RFY:SCRIPT:INSERT
 </script>
