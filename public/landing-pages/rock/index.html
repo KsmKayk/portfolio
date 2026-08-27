@@ -228,6 +228,63 @@
   .rfy-card-link:hover { color: var(--rfy-fg); }
   .rfy-catalogo-note { margin: 16px 0 0; font-size: 14px; color: rgba(239, 233, 224, 0.5); }
 
+  .rfy-goods { padding: 8px 20px 76px; }
+  .rfy-goods-inner { max-width: 1180px; margin: 0 auto; }
+  .rfy-goods-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; margin-top: 22px; }
+  .rfy-goods-item { background: var(--rfy-bg); border: 1px solid rgba(239, 233, 224, 0.16); padding: 16px 14px 18px; }
+  .rfy-goods-item-name { font-family: var(--rfy-font-display); font-size: 13px; letter-spacing: 0.02em; text-transform: uppercase; color: var(--rfy-fg); }
+  .rfy-goods-item-note { margin-top: 5px; font-size: 13px; line-height: 1.35; color: rgba(239, 233, 224, 0.5); }
+
+  .rfy-bandas { position: relative; z-index: 2; margin: -20px 0; padding: 78px 20px 80px; color: var(--rfy-bg); }
+  .rfy-bandas-inner { position: relative; max-width: 1180px; margin: 0 auto; }
+  .rfy-bandas-list {
+    display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 16px 0 0; font-family: var(--rfy-font-display);
+    font-size: clamp(18px, 2.4vw, 30px); line-height: 1; letter-spacing: -0.02em; text-transform: uppercase;
+  }
+  .rfy-bandas-sep { opacity: 0.45; }
+  .rfy-bandas-footer {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 26px;
+    padding-top: 20px; border-top: 1px solid rgba(12, 11, 11, 0.28);
+  }
+  .rfy-bandas-footer p { margin: 0; max-width: 460px; font-size: 15px; line-height: 1.5; color: rgba(12, 11, 11, 0.78); }
+  .rfy-btn-dark {
+    padding: 10px 18px; background: var(--rfy-bg); color: var(--rfy-accent); font-size: 12px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .rfy-btn-dark:hover { background: var(--rfy-fg); color: var(--rfy-bg); }
+
+  .rfy-galeria { padding: 34px 20px 54px; }
+  .rfy-galeria-inner { max-width: 1180px; margin: 0 auto; }
+  .rfy-galeria-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+  .rfy-galeria-link { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  .rfy-galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 6px; }
+  .rfy-galeria-grid img { width: 100%; height: 190px; object-fit: cover; }
+  .rfy-galeria-grid img.is-mono { filter: grayscale(1) contrast(1.12); }
+
+  .rfy-faq { padding: 8px 20px 54px; }
+  .rfy-faq-inner { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 24px 40px; }
+  .rfy-faq-side { flex: 1 1 240px; }
+  .rfy-faq-list {
+    flex: 2 1 520px; display: grid; gap: 1px; background: rgba(239, 233, 224, 0.13);
+    border-top: 1px solid rgba(239, 233, 224, 0.13); border-bottom: 1px solid rgba(239, 233, 224, 0.13);
+  }
+  .rfy-faq-item { background: var(--rfy-bg); padding: 14px 0; }
+  .rfy-faq-q { font-size: 14px; font-weight: 700; color: var(--rfy-fg); }
+  .rfy-faq-a { margin-top: 4px; font-size: 14px; line-height: 1.45; color: rgba(239, 233, 224, 0.6); }
+
+  .rfy-loja { border-top: 1px solid rgba(239, 233, 224, 0.13); }
+  .rfy-loja-inner { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; }
+  .rfy-loja-info { flex: 1 1 320px; padding: 40px 20px; }
+  .rfy-loja-title { margin: 8px 0 0; font-family: var(--rfy-font-display); font-weight: 400; font-size: clamp(24px, 3.2vw, 36px); line-height: 1.02; letter-spacing: -0.02em; text-transform: uppercase; color: var(--rfy-fg); }
+  .rfy-loja-addr { margin: 14px 0 0; max-width: 380px; font-size: 15px; line-height: 1.55; color: rgba(239, 233, 224, 0.75); }
+  .rfy-loja-ctas { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .rfy-loja-map { flex: 1 1 380px; min-height: 300px; border-left: 1px solid rgba(239, 233, 224, 0.13); }
+  .rfy-loja-map iframe {
+    display: block; width: 100%; height: 100%; min-height: 300px; border: 0;
+    filter: grayscale(0.7) contrast(1.05) invert(0.9) hue-rotate(180deg);
+  }
+
   /* RFY:STYLES:INSERT */
 </style>
 </head>
@@ -305,6 +362,106 @@
       </div>
       <div class="rfy-track" id="rfy-track"></div>
       <p class="rfy-catalogo-note">O estoque gira rápido e tem muito mais na loja. Pergunte pelo que você procura.</p>
+    </div>
+  </section>
+
+  <section class="rfy-goods">
+    <div data-reveal class="rfy-goods-inner">
+      <div class="rfy-eyebrow">Além das camisetas</div>
+      <h2 class="rfy-h2" style="margin-bottom: 0;">O que você encontra na loja</h2>
+      <div class="rfy-goods-grid" id="rfy-goods-grid"></div>
+    </div>
+  </section>
+
+  <section id="bandas" class="rfy-bandas">
+    <div class="rfy-shape rfy-shape--pink" style="inset: -12px 0 -14px; clip-path: polygon(0% 3.8%, 8% 1%, 16% 3.6%, 24% 0.8%, 33% 3.4%, 41% 0.6%, 50% 3.2%, 58% 0.4%, 66% 3%, 75% 0.6%, 83% 3.2%, 91% 0.8%, 100% 3.4%, 100% 95.6%, 92% 98.4%, 83% 95.4%, 75% 98.2%, 66% 95.2%, 58% 98%, 49% 95%, 41% 97.8%, 32% 94.8%, 24% 97.6%, 15% 94.8%, 7% 97.4%, 0% 95%);"></div>
+    <canvas class="rfy-shape-canvas" id="rfy-canvas-bandas-pink" style="clip-path: polygon(0% 3.8%, 8% 1%, 16% 3.6%, 24% 0.8%, 33% 3.4%, 41% 0.6%, 50% 3.2%, 58% 0.4%, 66% 3%, 75% 0.6%, 83% 3.2%, 91% 0.8%, 100% 3.4%, 100% 95.6%, 92% 98.4%, 83% 95.4%, 75% 98.2%, 66% 95.2%, 58% 98%, 49% 95%, 41% 97.8%, 32% 94.8%, 24% 97.6%, 15% 94.8%, 7% 97.4%, 0% 95%);"></canvas>
+    <div class="rfy-shape rfy-shape--orange" style="clip-path: polygon(0% 1.2%, 6% 3.4%, 13% 0.6%, 20% 2.8%, 27% 0.2%, 35% 2.4%, 42% 0%, 50% 2.2%, 58% 0.4%, 66% 3%, 74% 0.8%, 82% 3.4%, 89% 1%, 95% 3.6%, 100% 1.8%, 100% 98%, 95% 96%, 88% 99.2%, 80% 96.6%, 72% 99.6%, 64% 97%, 56% 99.8%, 48% 97.2%, 40% 100%, 31% 97.4%, 23% 99.8%, 15% 97.2%, 8% 99.4%, 0% 97%);"></div>
+    <canvas class="rfy-shape-canvas" id="rfy-canvas-bandas-orange" style="clip-path: polygon(0% 1.2%, 6% 3.4%, 13% 0.6%, 20% 2.8%, 27% 0.2%, 35% 2.4%, 42% 0%, 50% 2.2%, 58% 0.4%, 66% 3%, 74% 0.8%, 82% 3.4%, 89% 1%, 95% 3.6%, 100% 1.8%, 100% 98%, 95% 96%, 88% 99.2%, 80% 96.6%, 72% 99.6%, 64% 97%, 56% 99.8%, 48% 97.2%, 40% 100%, 31% 97.4%, 23% 99.8%, 15% 97.2%, 8% 99.4%, 0% 97%);"></canvas>
+    <div data-reveal class="rfy-bandas-inner">
+      <div class="rfy-label-dark">Passam pela arara</div>
+      <div class="rfy-bandas-list">
+        <span>System of a Down</span><span class="rfy-bandas-sep">✶</span>
+        <span>Korn</span><span class="rfy-bandas-sep">✶</span>
+        <span>AC/DC</span><span class="rfy-bandas-sep">✶</span>
+        <span>Avenged Sevenfold</span><span class="rfy-bandas-sep">✶</span>
+        <span>Nirvana</span><span class="rfy-bandas-sep">✶</span>
+        <span>Demon Slayer</span><span class="rfy-bandas-sep">✶</span>
+        <span>One Piece</span><span class="rfy-bandas-sep">✶</span>
+        <span>Naruto</span><span class="rfy-bandas-sep">✶</span>
+        <span>Pokémon</span><span class="rfy-bandas-sep">✶</span>
+        <span>Marvel</span><span class="rfy-bandas-sep">✶</span>
+        <span>Hello Kitty</span><span class="rfy-bandas-sep">✶</span>
+        <span>Cartoon Network</span>
+      </div>
+      <div class="rfy-bandas-footer">
+        <p>Não achou a sua banda ou o seu personagem? Manda o nome no WhatsApp que a gente procura pra você.</p>
+        <a href="#" id="rfy-bandas-wa" class="rfy-btn-dark" target="_blank" rel="noreferrer">Pedir uma peça</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="rfy-galeria">
+    <div data-reveal class="rfy-galeria-inner">
+      <div class="rfy-galeria-head">
+        <div>
+          <div class="rfy-eyebrow">Por dentro da loja</div>
+          <h2 class="rfy-h2">Galeria</h2>
+        </div>
+        <a href="https://instagram.com/fabiorockforyou" target="_blank" rel="noreferrer" class="rfy-galeria-link">Mais no @fabiorockforyou →</a>
+      </div>
+      <div class="rfy-galeria-grid">
+        <img src="uploads/rock/SaveClip.App_698751426_18324716062268337_1186645912981004885_n.jpg" alt="Arara de camisetas de banda" class="is-mono" loading="lazy" />
+        <img src="uploads/pop/SaveClip.App_649187775_17942150541137594_7276397696525469133_n.jpg" alt="Pelúcias na loja" loading="lazy" />
+        <img src="uploads/anime/SaveClip.App_460135687_18250558051268337_2528918421395883158_n.jpg" alt="Mangás na prateleira" loading="lazy" />
+        <img src="uploads/pop/SaveClip.App_652609654_17990636534945734_4779998178597217866_n.jpg" alt="Pelúcias Hello Kitty" loading="lazy" />
+        <img src="uploads/rock/SaveClip.App_700102122_18324716026268337_815700617631773090_n.jpg" alt="Camisetas e regatas de rock" class="is-mono" loading="lazy" />
+        <img src="uploads/pop/SaveClip.App_657463522_18086249087219277_4793654301986492837_n.jpg" alt="Detalhe de estampa" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="rfy-faq">
+    <div data-reveal class="rfy-faq-inner">
+      <div class="rfy-faq-side">
+        <div class="rfy-eyebrow">Dúvidas comuns</div>
+        <h2 class="rfy-h2">Perguntas rápidas</h2>
+      </div>
+      <div class="rfy-faq-list">
+        <div class="rfy-faq-item">
+          <div class="rfy-faq-q">Dá para reservar uma peça?</div>
+          <div class="rfy-faq-a">Sim. Manda mensagem com o modelo e o tamanho que separamos no seu nome.</div>
+        </div>
+        <div class="rfy-faq-item">
+          <div class="rfy-faq-q">Quais tamanhos vocês têm?</div>
+          <div class="rfy-faq-a">Varia por estampa. Pergunte no WhatsApp que confirmamos a grade daquele modelo.</div>
+        </div>
+        <div class="rfy-faq-item">
+          <div class="rfy-faq-q">E se a estampa que eu quero não estiver aí?</div>
+          <div class="rfy-faq-a">Manda o nome da banda ou do personagem. A gente procura e te avisa quando chegar.</div>
+        </div>
+        <div class="rfy-faq-item">
+          <div class="rfy-faq-q">Onde fica a loja?</div>
+          <div class="rfy-faq-a">Edifício Cardoso Bessa, Sala 116, em Duque de Caxias. O mapa está logo abaixo.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="loja" class="rfy-loja">
+    <div class="rfy-loja-inner">
+      <div data-reveal class="rfy-loja-info">
+        <div class="rfy-eyebrow">Venha na loja</div>
+        <h2 class="rfy-loja-title">Duque de Caxias</h2>
+        <p class="rfy-loja-addr">Avenida Governador Leonel de Moura Brizola, 1741, Sala 116, Edifício Cardoso Bessa, Duque de Caxias, Rio de Janeiro</p>
+        <div class="rfy-loja-ctas">
+          <a href="#" id="rfy-loja-maps" class="rfy-btn-primary" style="padding: 10px 18px; font-size: 12px;" target="_blank" rel="noreferrer">Traçar rota</a>
+          <a href="#" id="rfy-loja-wa" class="rfy-btn-outline" style="padding: 10px 18px; font-size: 12px;" target="_blank" rel="noreferrer">21 99420-8796</a>
+        </div>
+      </div>
+      <div class="rfy-loja-map">
+        <iframe title="Mapa da loja Rock For You" src="https://www.google.com/maps?q=Avenida%20Governador%20Leonel%20de%20Moura%20Brizola%2C%201741%2C%20Duque%20de%20Caxias%2C%20RJ&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </section>
 
@@ -430,6 +587,30 @@
   document.getElementById('rfy-cat-next').addEventListener('click', () => {
     track.scrollBy({ left: track.clientWidth * 0.8, behavior: 'smooth' });
   });
+
+  const GOODS = [
+    { name: "Camisetas", note: "Rock, anime e cultura pop." },
+    { name: "Regatas", note: "Mesmas estampas em cava." },
+    { name: "Mangás", note: "Volumes avulsos e coleções." },
+    { name: "Pelúcias", note: "Stitch, Hello Kitty e mais." },
+    { name: "Canecas", note: "Banda e personagem." },
+    { name: "Colecionáveis", note: "Figuras e itens de estante." },
+    { name: "Acessórios", note: "Chaveiros, bottons, patches." },
+    { name: "Livros e fanbooks", note: "Material oficial de anime." }
+  ];
+  document.getElementById('rfy-goods-grid').innerHTML = GOODS.map((g) => (
+    '<div class="rfy-goods-item">' +
+      '<div class="rfy-goods-item-name">' + g.name + '</div>' +
+      '<div class="rfy-goods-item-note">' + g.note + '</div>' +
+    '</div>'
+  )).join('');
+
+  document.getElementById('rfy-bandas-wa').href = waLink('Oi! Estou procurando uma peça específica: ');
+
+  const MAPS_LINK = 'https://www.google.com/maps/dir/?api=1&destination=' +
+    encodeURIComponent('Avenida Governador Leonel de Moura Brizola, 1741, Duque de Caxias, RJ');
+  document.getElementById('rfy-loja-maps').href = MAPS_LINK;
+  document.getElementById('rfy-loja-wa').href = waLink(MAIN_WA_TEXT);
 
   // RFY:SCRIPT:INSERT
 </script>
