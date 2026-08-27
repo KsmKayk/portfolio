@@ -179,6 +179,55 @@
   }
   .rfy-btn-ghost-dark:hover { background: var(--rfy-bg); color: var(--rfy-accent); border-color: var(--rfy-bg); }
 
+  .rfy-catalogo { position: relative; padding: 62px 20px 54px; }
+  .rfy-catalogo-inner { max-width: 1180px; margin: 0 auto; }
+  .rfy-catalogo-head {
+    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px;
+  }
+  .rfy-h2 {
+    margin: 8px 0 0; font-family: var(--rfy-font-display); font-weight: 400;
+    font-size: clamp(26px, 3.6vw, 42px); line-height: 1; letter-spacing: -0.02em;
+    text-transform: uppercase; color: var(--rfy-fg);
+  }
+  .rfy-catalogo-nav { display: flex; gap: 7px; }
+  .rfy-nav-btn {
+    width: 36px; height: 36px; border-radius: 3px; border: 1px solid rgba(239, 233, 224, 0.3);
+    background: transparent; color: var(--rfy-fg); font-size: 14px; cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .rfy-nav-btn:hover { border-color: var(--rfy-accent); color: var(--rfy-accent); }
+  .rfy-filters { display: flex; flex-wrap: wrap; gap: 7px; margin: 22px 0 18px; }
+  .rfy-filter-btn {
+    padding: 9px 16px; border-radius: 3px; border: 1px solid rgba(239, 233, 224, 0.26);
+    cursor: pointer; font-family: var(--rfy-font-body); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; background: transparent; color: var(--rfy-fg);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .rfy-filter-btn.is-active { background: var(--rfy-accent); color: var(--rfy-bg); }
+  .rfy-track {
+    display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px;
+  }
+  .rfy-card {
+    flex: 0 0 216px; scroll-snap-align: start; background: #141110;
+    border: 1px solid rgba(239, 233, 224, 0.11); transition: border-color 0.16s ease, opacity 0.4s ease, transform 0.4s ease;
+    opacity: 0; transform: translateY(18px);
+  }
+  .rfy-card.is-in { opacity: 1; transform: translateY(0); }
+  .rfy-card:hover { border-color: var(--rfy-accent); }
+  .rfy-card-img-wrap { position: relative; }
+  .rfy-card-img-wrap img { width: 100%; height: 244px; object-fit: cover; }
+  .rfy-card-tag {
+    position: absolute; top: 8px; left: 8px; padding: 4px 8px; background: var(--rfy-accent);
+    color: var(--rfy-bg); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .rfy-card-body { padding: 12px; }
+  .rfy-card-title { margin: 0; font-size: 14px; font-weight: 700; line-height: 1.25; letter-spacing: 0.01em; color: var(--rfy-fg); }
+  .rfy-card-note { margin: 5px 0 10px; font-size: 13px; line-height: 1.35; color: rgba(239, 233, 224, 0.55); }
+  .rfy-card-link { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rfy-accent); transition: color 0.15s ease; }
+  .rfy-card-link:hover { color: var(--rfy-fg); }
+  .rfy-catalogo-note { margin: 16px 0 0; font-size: 14px; color: rgba(239, 233, 224, 0.5); }
+
   /* RFY:STYLES:INSERT */
 </style>
 </head>
@@ -237,6 +286,28 @@
     </div>
   </section>
 
+  <section id="catalogo" class="rfy-catalogo">
+    <div class="rfy-catalogo-inner">
+      <div data-reveal class="rfy-catalogo-head">
+        <div>
+          <div class="rfy-eyebrow">Um pouco do que tem na loja</div>
+          <h2 class="rfy-h2">Catálogo</h2>
+        </div>
+        <div class="rfy-catalogo-nav">
+          <button type="button" class="rfy-nav-btn" id="rfy-cat-prev" aria-label="Anterior">←</button>
+          <button type="button" class="rfy-nav-btn" id="rfy-cat-next" aria-label="Próximo">→</button>
+        </div>
+      </div>
+      <div class="rfy-filters">
+        <button type="button" class="rfy-filter-btn is-active" data-cat="pop">Cultura pop</button>
+        <button type="button" class="rfy-filter-btn" data-cat="rock">Rock</button>
+        <button type="button" class="rfy-filter-btn" data-cat="anime">Anime</button>
+      </div>
+      <div class="rfy-track" id="rfy-track"></div>
+      <p class="rfy-catalogo-note">O estoque gira rápido e tem muito mais na loja. Pergunte pelo que você procura.</p>
+    </div>
+  </section>
+
   <!-- RFY:SECTIONS:INSERT -->
 </main>
 
@@ -283,6 +354,76 @@
   document.getElementById('rfy-shuffle-btn').addEventListener('click', () => {
     quoteIndex = (quoteIndex + 1 + Math.floor(Math.random() * (QUOTES.length - 1))) % QUOTES.length;
     renderQuote(quoteIndex);
+  });
+
+  const CATALOG = {
+    pop: [
+      { img: "uploads/pop/SaveClip.App_649187775_17942150541137594_7276397696525469133_n.jpg", name: "Pelúcias Stitch e Angel", tag: "Pelúcia", note: "Vários tamanhos." },
+      { img: "uploads/pop/SaveClip.App_656690224_18164410894420929_7927532731938851400_n.jpg", name: "Deadpool & Wolverine", tag: "Camiseta", note: "Estampa grande." },
+      { img: "uploads/pop/SaveClip.App_652609654_17990636534945734_4779998178597217866_n.jpg", name: "Pelúcias Hello Kitty", tag: "Pelúcia", note: "Modelos grandes." },
+      { img: "uploads/pop/SaveClip.App_653977604_18062751656382387_4496262222097931424_n.jpg", name: "Consoles retrô Sega e Nintendo", tag: "Camiseta", note: "Para quem cresceu no cartucho." },
+      { img: "uploads/pop/SaveClip.App_650978238_17991559124930766_4794375744282428361_n.jpg", name: "The Fresh Prince of Bel-Air", tag: "Camiseta", note: "Estampa anos 90." },
+      { img: "uploads/pop/SaveClip.App_657679108_18183770692326405_6374689376158435885_n.jpg", name: "The Last of Us", tag: "Camiseta", note: "Joel e Ellie." },
+      { img: "uploads/pop/SaveClip.App_658800277_18371667793164523_4432036356268433150_n.jpg", name: "Clássicos do Cartoon Network", tag: "Camiseta", note: "Nove personagens." },
+      { img: "uploads/pop/SaveClip.App_655084968_18157529089443990_4272791121464112706_n.jpg", name: "Supernatural", tag: "Camiseta", note: "Cinza mescla." }
+    ],
+    rock: [
+      { img: "uploads/rock/SaveClip.App_657223530_18038866103571181_1830343681824598782_n.jpg", name: "System of a Down — Wake Up!", tag: "Camiseta", note: "Estampa nas costas." },
+      { img: "uploads/rock/SaveClip.App_649930639_17940223845157310_1908969125519721192_n.jpg", name: "System of a Down — Águia", tag: "Camiseta", note: "Estampa grande." },
+      { img: "uploads/rock/SaveClip.App_669928912_18098797279999640_6112816706361503303_n.jpg", name: "System of a Down — Artsakh", tag: "Camiseta", note: "Tons desbotados." },
+      { img: "uploads/rock/SaveClip.App_658871049_18092946614173911_8020449171673842999_n.jpg", name: "Avenged Sevenfold — Life Is But a Dream", tag: "Camiseta", note: "Deathbat em laranja." },
+      { img: "uploads/rock/SaveClip.App_657639625_18010880477692165_5430744108715106421_n.jpg", name: "Avenged Sevenfold — Caveira", tag: "Camiseta", note: "Estampa colorida." },
+      { img: "uploads/rock/SaveClip.App_698751426_18324716062268337_1186645912981004885_n.jpg", name: "Korn — Follow the Leader", tag: "Camiseta", note: "Também em regata." },
+      { img: "uploads/rock/SaveClip.App_700102122_18324716026268337_815700617631773090_n.jpg", name: "Korn, AC/DC e mais", tag: "Camiseta / Regata", note: "Vários clássicos." }
+    ],
+    anime: [
+      { img: "uploads/anime/SaveClip.App_654862792_18358653913237738_2163640989489434258_n.jpg", name: "Demon Slayer — Tengen Uzui", tag: "Camiseta", note: "Estampa nas costas." },
+      { img: "uploads/anime/SaveClip.App_460135687_18250558051268337_2528918421395883158_n.jpg", name: "Mangá Demon Slayer", tag: "Mangá", note: "Volumes avulsos." },
+      { img: "uploads/anime/SaveClip.App_655607105_18166590334406627_4455866004294120684_n.jpg", name: "One Piece — Luffy e Kaido", tag: "Camiseta", note: "Estampa colorida." },
+      { img: "uploads/anime/SaveClip.App_655814591_18198276826341573_3190277859813256171_n.jpg", name: "Naruto — Obito", tag: "Camiseta", note: "Cinza mescla." },
+      { img: "uploads/anime/SaveClip.App_654252852_18111689605779652_1645127921179157901_n.jpg", name: "Yu-Gi-Oh! — Yugi", tag: "Camiseta", note: "Estampa frontal." },
+      { img: "uploads/anime/SaveClip.App_655338873_18096719257999943_8568178372141836631_n.jpg", name: "Pokémon — Iniciais", tag: "Camiseta", note: "Os três iniciais." },
+      { img: "uploads/anime/SaveClip.App_460177096_18250558096268337_441033478719607601_n.jpg", name: "Demon Slayer — Fanbook Oficial", tag: "Livro", note: "Registros do Kisatsutai." }
+    ]
+  };
+  let activeCat = 'pop';
+  const track = document.getElementById('rfy-track');
+  function renderCatalog(cat) {
+    activeCat = cat;
+    track.innerHTML = CATALOG[cat].map((item) => (
+      '<article class="rfy-card">' +
+        '<div class="rfy-card-img-wrap">' +
+          '<img src="' + item.img + '" alt="' + item.name + '" loading="lazy" />' +
+          '<span class="rfy-card-tag">' + item.tag + '</span>' +
+        '</div>' +
+        '<div class="rfy-card-body">' +
+          '<h3 class="rfy-card-title">' + item.name + '</h3>' +
+          '<p class="rfy-card-note">' + item.note + '</p>' +
+          '<a href="' + waLink('Oi! Vi “' + item.name + '” no site da Rock For You e quero saber mais.') + '" target="_blank" rel="noreferrer" class="rfy-card-link">Consultar →</a>' +
+        '</div>' +
+      '</article>'
+    )).join('');
+    track.scrollTo({ left: 0, behavior: 'smooth' });
+    requestAnimationFrame(() => {
+      track.querySelectorAll('.rfy-card').forEach((card, i) => {
+        card.style.transitionDelay = (i * 0.05) + 's';
+        requestAnimationFrame(() => card.classList.add('is-in'));
+      });
+    });
+  }
+  renderCatalog('pop');
+  document.querySelectorAll('.rfy-filter-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.rfy-filter-btn').forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      renderCatalog(btn.dataset.cat);
+    });
+  });
+  document.getElementById('rfy-cat-prev').addEventListener('click', () => {
+    track.scrollBy({ left: -track.clientWidth * 0.8, behavior: 'smooth' });
+  });
+  document.getElementById('rfy-cat-next').addEventListener('click', () => {
+    track.scrollBy({ left: track.clientWidth * 0.8, behavior: 'smooth' });
   });
 
   // RFY:SCRIPT:INSERT
