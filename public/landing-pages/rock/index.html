@@ -817,6 +817,52 @@
   }
 
   const shaderPanels = [];
+  const sectionPanelMap = new Map();
+  const lastMoveTimeBySection = new Map();
+
+  function bindHover(sectionEl, panelsForSection) {
+    sectionPanelMap.set(sectionEl, panelsForSection);
+    lastMoveTimeBySection.set(sectionEl, -1000);
+    let lastX = null, lastY = null;
+    sectionEl.addEventListener('pointermove', (e) => {
+      const rect = sectionEl.getBoundingClientRect();
+      const nx = (e.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (e.clientY - rect.top) / rect.height;
+      panelsForSection.forEach((p) => p.setMouse(nx, ny));
+      const now = performance.now() / 1000;
+      lastMoveTimeBySection.set(sectionEl, now);
+      if (lastX !== null) {
+        const speed = Math.hypot(e.clientX - lastX, e.clientY - lastY);
+        if (speed > 18) panelsForSection.forEach((p) => p.ping(nx, ny, now));
+      }
+      lastX = e.clientX; lastY = e.clientY;
+    });
+    sectionEl.addEventListener('pointerleave', () => {
+      lastMoveTimeBySection.set(sectionEl, -1000);
+      lastX = null; lastY = null;
+    });
+    sectionEl.addEventListener('touchstart', (e) => {
+      const rect = sectionEl.getBoundingClientRect();
+      const t = e.touches[0];
+      const nx = (t.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (t.clientY - rect.top) / rect.height;
+      const now = performance.now() / 1000;
+      panelsForSection.forEach((p) => { p.setMouse(nx, ny); p.ping(nx, ny, now); });
+    }, { passive: true });
+  }
+
+  function tickHover() {
+    const now = performance.now() / 1000;
+    sectionPanelMap.forEach((panelsForSection, sectionEl) => {
+      const lastMove = lastMoveTimeBySection.get(sectionEl);
+      const hoverTarget = (now - lastMove < 0.15 && !prefersReducedMotion) ? 1 : 0;
+      panelsForSection.forEach((p) => {
+        p.uniforms.uHover.value += (hoverTarget - p.uniforms.uHover.value) * 0.12;
+      });
+    });
+    requestAnimationFrame(tickHover);
+  }
+
   try {
     if (!window.THREE) throw new Error('three.js failed to load from CDN');
     const loader = new THREE.TextureLoader();
@@ -837,6 +883,7 @@
     heroCanvas.classList.add('is-active');
     heroPanel.resize();
     shaderPanels.push(heroPanel);
+    bindHover(document.getElementById('top'), [heroPanel]);
 
     function renderAllPanels() {
       const now = performance.now() / 1000;
@@ -844,6 +891,7 @@
       requestAnimationFrame(renderAllPanels);
     }
     requestAnimationFrame(renderAllPanels);
+    requestAnimationFrame(tickHover);
   } catch (err) {
     console.warn('Rock For You: shader textures disabled —', err.message);
   }
