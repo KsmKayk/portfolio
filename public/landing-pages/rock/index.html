@@ -683,6 +683,7 @@
     'uniform vec3 uColorC;',
     'uniform float uReducedMotion;',
     'uniform float uSeed;',
+    'uniform float uInvert;',
     '',
     'float hash(vec2 p) {',
     '  p = fract(p * vec2(123.34, 456.21));',
@@ -745,7 +746,8 @@
     '  float dotShape = smoothstep(dotRadius + 0.04, dotRadius, dist);',
     '  float threshold = bayerDither(gl_FragCoord.xy);',
     '  float dithered = step(threshold, dotShape);',
-    '  vec3 color = mix(uColorA, uColorB, dithered);',
+    '  float finalDithered = uInvert > 0.5 ? (1.0 - dithered) : dithered;',
+    '  vec3 color = mix(uColorA, uColorB, finalDithered);',
     '  float accentMix = dithered * smoothstep(0.72, 1.0, lum) * mix(0.15, 0.6, lens);',
     '  color = mix(color, uColorC, accentMix);',
     '  gl_FragColor = vec4(color, 1.0);',
@@ -778,7 +780,8 @@
         uColorB: { value: hexToVec3(opts.colorB) },
         uColorC: { value: hexToVec3(opts.colorC) },
         uReducedMotion: { value: prefersReducedMotion ? 1 : 0 },
-        uSeed: { value: opts.seed || 0 }
+        uSeed: { value: opts.seed || 0 },
+        uInvert: { value: opts.invert ? 1 : 0 }
       };
       const material = new THREE.ShaderMaterial({
         uniforms: this.uniforms,
@@ -892,11 +895,11 @@
 
     const frasePinkPanel = new ShaderPanel({
       canvas: document.getElementById('rfy-canvas-frase-pink'), mode: 'procedural',
-      colorA: '#0C0B0B', colorB: '#F7D9CF', colorC: '#EA3B21', seed: 0
+      colorA: '#0C0B0B', colorB: '#F7D9CF', colorC: '#EA3B21', seed: 0, invert: true
     });
     const fraseOrangePanel = new ShaderPanel({
       canvas: document.getElementById('rfy-canvas-frase-orange'), mode: 'procedural',
-      colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF', seed: 8
+      colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF', seed: 8, invert: true
     });
     document.getElementById('rfy-canvas-frase-pink').classList.add('is-active');
     document.getElementById('rfy-canvas-frase-orange').classList.add('is-active');
@@ -907,11 +910,11 @@
 
     const bandasPinkPanel = new ShaderPanel({
       canvas: document.getElementById('rfy-canvas-bandas-pink'), mode: 'procedural',
-      colorA: '#0C0B0B', colorB: '#F7D9CF', colorC: '#EA3B21', seed: 16
+      colorA: '#0C0B0B', colorB: '#F7D9CF', colorC: '#EA3B21', seed: 16, invert: true
     });
     const bandasOrangePanel = new ShaderPanel({
       canvas: document.getElementById('rfy-canvas-bandas-orange'), mode: 'procedural',
-      colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF', seed: 24
+      colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF', seed: 24, invert: true
     });
     document.getElementById('rfy-canvas-bandas-pink').classList.add('is-active');
     document.getElementById('rfy-canvas-bandas-orange').classList.add('is-active');
