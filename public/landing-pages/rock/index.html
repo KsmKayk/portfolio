@@ -821,6 +821,7 @@
   const lastMoveTimeBySection = new Map();
 
   function bindHover(sectionEl, panelsForSection) {
+    const isFirstSection = sectionPanelMap.size === 0;
     sectionPanelMap.set(sectionEl, panelsForSection);
     lastMoveTimeBySection.set(sectionEl, -1000);
     let lastX = null, lastY = null;
@@ -847,8 +848,10 @@
       const nx = (t.clientX - rect.left) / rect.width;
       const ny = 1.0 - (t.clientY - rect.top) / rect.height;
       const now = performance.now() / 1000;
+      lastMoveTimeBySection.set(sectionEl, now);
       panelsForSection.forEach((p) => { p.setMouse(nx, ny); p.ping(nx, ny, now); });
     }, { passive: true });
+    if (isFirstSection) requestAnimationFrame(tickHover);
   }
 
   function tickHover() {
@@ -891,7 +894,6 @@
       requestAnimationFrame(renderAllPanels);
     }
     requestAnimationFrame(renderAllPanels);
-    requestAnimationFrame(tickHover);
   } catch (err) {
     console.warn('Rock For You: shader textures disabled —', err.message);
   }
