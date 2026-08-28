@@ -833,23 +833,18 @@
     const isFirstSection = sectionPanelMap.size === 0;
     sectionPanelMap.set(sectionEl, panelsForSection);
     lastMoveTimeBySection.set(sectionEl, -1000);
-    let lastX = null, lastY = null;
     sectionEl.addEventListener('pointermove', (e) => {
       const rect = sectionEl.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / rect.width;
       const ny = 1.0 - (e.clientY - rect.top) / rect.height;
-      panelsForSection.forEach((p) => p.setMouse(nx, ny));
       const now = performance.now() / 1000;
+      // Ping on every move (not just fast ones) so the ripple keeps pace
+      // with the cursor continuously instead of only firing on quick flicks.
+      panelsForSection.forEach((p) => { p.setMouse(nx, ny); p.ping(nx, ny, now); });
       lastMoveTimeBySection.set(sectionEl, now);
-      if (lastX !== null) {
-        const speed = Math.hypot(e.clientX - lastX, e.clientY - lastY);
-        if (speed > 18) panelsForSection.forEach((p) => p.ping(nx, ny, now));
-      }
-      lastX = e.clientX; lastY = e.clientY;
     });
     sectionEl.addEventListener('pointerleave', () => {
       lastMoveTimeBySection.set(sectionEl, -1000);
-      lastX = null; lastY = null;
     });
     sectionEl.addEventListener('touchstart', (e) => {
       const rect = sectionEl.getBoundingClientRect();
@@ -908,7 +903,7 @@
     const fraseOrangePanel = new ShaderPanel({
       canvas: document.getElementById('rfy-canvas-frase-orange'), mode: 'procedural',
       colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF', seed: 8, invert: true,
-      gridBase: 18, contrast: 0.95, dotScale: 1.05, rippleAmt: 1.7
+      gridBase: 18, contrast: 0.95, dotScale: 0.4, rippleAmt: 1.7
     });
     document.getElementById('rfy-canvas-frase-orange').classList.add('is-active');
     fraseOrangePanel.resize();
@@ -918,7 +913,7 @@
     const bandasOrangePanel = new ShaderPanel({
       canvas: document.getElementById('rfy-canvas-bandas-orange'), mode: 'procedural',
       colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF', seed: 24, invert: true,
-      gridBase: 18, contrast: 0.95, dotScale: 1.05, rippleAmt: 1.7
+      gridBase: 18, contrast: 0.95, dotScale: 0.4, rippleAmt: 1.7
     });
     document.getElementById('rfy-canvas-bandas-orange').classList.add('is-active');
     bandasOrangePanel.resize();
