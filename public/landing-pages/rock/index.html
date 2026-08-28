@@ -752,8 +752,8 @@
   ].join('\n');
 
   function hexToVec3(hex) {
-    const c = new THREE.Color(hex);
-    return c;
+    const n = parseInt(hex.slice(1), 16);
+    return new THREE.Vector3(((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255);
   }
 
   class ShaderPanel {
@@ -805,13 +805,27 @@
       this.uniforms.uTime.value = timeNow;
       this.renderer.render(this.scene, this.camera);
     }
+
+    dispose() {
+      this.scene.traverse((obj) => {
+        if (obj.geometry) obj.geometry.dispose();
+        if (obj.material) obj.material.dispose();
+      });
+      if (this.uniforms.uTexture.value) this.uniforms.uTexture.value.dispose();
+      this.renderer.dispose();
+    }
   }
 
   const shaderPanels = [];
   try {
     if (!window.THREE) throw new Error('three.js failed to load from CDN');
     const loader = new THREE.TextureLoader();
-    const heroTexture = loader.load('uploads/Gemini_Generated_Image_u1wpswu1wpswu1wp.png');
+    const heroTexture = loader.load(
+      'uploads/Gemini_Generated_Image_u1wpswu1wpswu1wp.png',
+      undefined,
+      undefined,
+      (err) => console.warn('Rock For You: hero shader texture failed to load —', err)
+    );
     heroTexture.minFilter = THREE.LinearFilter;
     heroTexture.magFilter = THREE.LinearFilter;
 
@@ -821,6 +835,7 @@
       colorA: '#0C0B0B', colorB: '#EFE9E0', colorC: '#EA3B21'
     });
     heroCanvas.classList.add('is-active');
+    heroPanel.resize();
     shaderPanels.push(heroPanel);
 
     function renderAllPanels() {
