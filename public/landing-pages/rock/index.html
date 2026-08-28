@@ -920,6 +920,23 @@
     shaderPanels.push(bandasPinkPanel, bandasOrangePanel);
     bindHover(document.getElementById('bandas'), [bandasPinkPanel, bandasOrangePanel]);
 
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const panelsForSection = sectionPanelMap.get(entry.target);
+        if (panelsForSection) panelsForSection.forEach((p) => { p.visible = entry.isIntersecting; });
+      });
+    }, { threshold: 0 });
+    [document.getElementById('top'), document.getElementById('frase'), document.getElementById('bandas')]
+      .forEach((el) => visibilityObserver.observe(el));
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        shaderPanels.forEach((p) => p.resize());
+      }, 150);
+    });
+
     function renderAllPanels() {
       const now = performance.now() / 1000;
       shaderPanels.forEach((p) => p.render(now));
