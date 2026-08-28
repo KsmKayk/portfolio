@@ -888,6 +888,36 @@
     shaderPanels.push(heroPanel);
     bindHover(document.getElementById('top'), [heroPanel]);
 
+    const frasePinkPanel = new ShaderPanel({
+      canvas: document.getElementById('rfy-canvas-frase-pink'), mode: 'procedural',
+      colorA: '#0C0B0B', colorB: '#F7D9CF', colorC: '#EA3B21'
+    });
+    const fraseOrangePanel = new ShaderPanel({
+      canvas: document.getElementById('rfy-canvas-frase-orange'), mode: 'procedural',
+      colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF'
+    });
+    document.getElementById('rfy-canvas-frase-pink').classList.add('is-active');
+    document.getElementById('rfy-canvas-frase-orange').classList.add('is-active');
+    frasePinkPanel.resize();
+    fraseOrangePanel.resize();
+    shaderPanels.push(frasePinkPanel, fraseOrangePanel);
+    bindHover(document.getElementById('frase'), [frasePinkPanel, fraseOrangePanel]);
+
+    const bandasPinkPanel = new ShaderPanel({
+      canvas: document.getElementById('rfy-canvas-bandas-pink'), mode: 'procedural',
+      colorA: '#0C0B0B', colorB: '#F7D9CF', colorC: '#EA3B21'
+    });
+    const bandasOrangePanel = new ShaderPanel({
+      canvas: document.getElementById('rfy-canvas-bandas-orange'), mode: 'procedural',
+      colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF'
+    });
+    document.getElementById('rfy-canvas-bandas-pink').classList.add('is-active');
+    document.getElementById('rfy-canvas-bandas-orange').classList.add('is-active');
+    bandasPinkPanel.resize();
+    bandasOrangePanel.resize();
+    shaderPanels.push(bandasPinkPanel, bandasOrangePanel);
+    bindHover(document.getElementById('bandas'), [bandasPinkPanel, bandasOrangePanel]);
+
     function renderAllPanels() {
       const now = performance.now() / 1000;
       shaderPanels.forEach((p) => p.render(now));
