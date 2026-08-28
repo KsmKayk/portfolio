@@ -92,7 +92,7 @@
     position: absolute; inset: -8% 0; width: 100%; height: 116%;
     display: none; pointer-events: none;
   }
-  .rfy-hero-canvas.is-active { display: block; opacity: 0.42; }
+  .rfy-hero-canvas.is-active { display: block; opacity: 0.6; }
   .rfy-hero-overlay {
     position: absolute; inset: 0;
     background: linear-gradient(to right, rgba(12, 11, 11, 0.94) 0%, rgba(12, 11, 11, 0.82) 46%, rgba(12, 11, 11, 0.6) 100%);
@@ -164,18 +164,18 @@
   .rfy-shape-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: none; pointer-events: none; }
   .rfy-shape-canvas.is-active { display: block; }
   .rfy-frase-inner { position: relative; max-width: 760px; margin: 0 auto; text-align: center; }
-  .rfy-label-dark { font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(239, 233, 224, 0.75); }
+  .rfy-label-dark { font-size: 11px; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(239, 233, 224, 0.75); }
   .rfy-quote-block { opacity: 0; transform: translateY(10px); transition: opacity 0.45s ease, transform 0.45s ease; }
   .rfy-quote-block.is-in { opacity: 1; transform: translateY(0); }
   .rfy-quote {
-    margin: 14px 0 0; font-family: var(--rfy-font-serif); font-size: clamp(22px, 2.6vw, 34px);
-    line-height: 1.24;
+    margin: 14px 0 0; font-family: var(--rfy-font-serif); font-size: clamp(25px, 3vw, 38px);
+    font-weight: 600; line-height: 1.26; text-shadow: 0 0 0.5px currentColor, 0 0 0.5px currentColor;
   }
-  .rfy-quote-author { margin-top: 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  .rfy-quote-author { margin-top: 14px; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
   .rfy-btn-ghost-dark {
-    margin-top: 18px; padding: 7px 14px; background: transparent; border: 1px solid rgba(239, 233, 224, 0.55);
-    border-radius: 3px; color: var(--rfy-fg); font-family: var(--rfy-font-body); font-size: 11px;
-    font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+    margin-top: 18px; padding: 8px 15px; background: transparent; border: 1px solid rgba(239, 233, 224, 0.55);
+    border-radius: 3px; color: var(--rfy-fg); font-family: var(--rfy-font-body); font-size: 12px;
+    font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
     transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
   .rfy-btn-ghost-dark:hover { background: var(--rfy-bg); color: var(--rfy-accent); border-color: var(--rfy-bg); }
@@ -240,17 +240,20 @@
   .rfy-bandas-inner { position: relative; max-width: 1180px; margin: 0 auto; }
   .rfy-bandas-list {
     display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 16px 0 0; font-family: var(--rfy-font-display);
-    font-size: clamp(18px, 2.4vw, 30px); line-height: 1; letter-spacing: -0.02em; text-transform: uppercase;
+    font-size: clamp(19px, 2.6vw, 32px); line-height: 1; letter-spacing: -0.02em; text-transform: uppercase;
   }
   .rfy-bandas-sep { opacity: 0.45; }
   .rfy-bandas-footer {
     display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 26px;
     padding-top: 20px; border-top: 1px solid rgba(12, 11, 11, 0.28);
   }
-  .rfy-bandas-footer p { margin: 0; max-width: 460px; font-size: 15px; line-height: 1.5; color: rgba(239, 233, 224, 0.85); }
+  .rfy-bandas-footer p {
+    margin: 0; max-width: 460px; font-size: 16px; font-weight: 600; line-height: 1.5;
+    color: rgba(239, 233, 224, 0.85);
+  }
   .rfy-btn-dark {
-    padding: 10px 18px; background: var(--rfy-bg); color: var(--rfy-accent); font-size: 12px;
-    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px;
+    padding: 10px 18px; background: var(--rfy-bg); color: var(--rfy-accent); font-size: 13px;
+    font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px;
     transition: background 0.15s ease, color 0.15s ease;
   }
   .rfy-btn-dark:hover { background: var(--rfy-fg); color: var(--rfy-bg); }
@@ -294,33 +297,6 @@
   @media (prefers-reduced-motion: reduce) {
     [data-reveal] { transition: none; }
   }
-
-  /* TEMP debug tuning panel — remove before final delivery */
-  #rfy-debug {
-    display: none; position: fixed; top: 16px; right: 16px; z-index: 999;
-    width: 260px; padding: 14px 16px 16px; background: rgba(10, 9, 9, 0.94);
-    border: 1px solid rgba(239, 233, 224, 0.2); border-radius: 6px;
-    font-family: var(--rfy-font-body); color: var(--rfy-fg);
-    backdrop-filter: blur(6px);
-  }
-  #rfy-debug.is-on { display: block; }
-  #rfy-debug h3 {
-    margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--rfy-accent);
-  }
-  #rfy-debug label {
-    display: block; margin-top: 10px; font-size: 11px; font-weight: 600;
-    letter-spacing: 0.04em; color: rgba(239, 233, 224, 0.8);
-  }
-  #rfy-debug label span { float: right; color: var(--rfy-accent); font-weight: 700; }
-  #rfy-debug input[type="range"] { width: 100%; margin-top: 4px; accent-color: var(--rfy-accent); }
-  #rfy-debug button {
-    margin-top: 14px; width: 100%; padding: 8px; background: var(--rfy-accent); color: var(--rfy-bg);
-    border: none; border-radius: 4px; font-family: var(--rfy-font-body); font-size: 11px; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
-  }
-  #rfy-debug button:hover { background: var(--rfy-fg); }
-  #rfy-debug .rfy-debug-note { margin-top: 8px; font-size: 10px; line-height: 1.4; color: rgba(239, 233, 224, 0.5); }
 </style>
 </head>
 <body>
@@ -365,7 +341,6 @@
 
   <section id="frase" class="rfy-frase">
     <div class="rfy-shape rfy-shape--pink"></div>
-    <canvas class="rfy-shape-canvas" id="rfy-canvas-frase-pink" aria-hidden="true" style="inset: -14px 0 -10px; clip-path: polygon(0% 3.4%, 7% 6%, 14% 2.6%, 21% 5.4%, 29% 1.8%, 37% 4.6%, 44% 1.2%, 52% 4%, 60% 1%, 68% 3.6%, 76% 0.8%, 84% 3.2%, 91% 0.6%, 100% 2.4%, 100% 96.6%, 92% 99.4%, 84% 96.4%, 76% 99.2%, 67% 96.2%, 59% 99%, 50% 96%, 41% 98.8%, 33% 95.8%, 24% 98.6%, 16% 95.6%, 8% 98.4%, 0% 95.4%);"></canvas>
     <div class="rfy-shape rfy-shape--orange"></div>
     <canvas class="rfy-shape-canvas" id="rfy-canvas-frase-orange" aria-hidden="true" style="clip-path: polygon(0% 6.4%, 5% 3.1%, 11% 5.4%, 17% 2.2%, 24% 4.4%, 31% 1.4%, 38% 3.4%, 45% 0.7%, 52% 2.8%, 59% 0.3%, 66% 2.2%, 73% 0.1%, 81% 1.6%, 88% 0%, 94% 1.2%, 100% 0.2%, 100% 94.4%, 94% 97.6%, 87% 95.2%, 80% 98.2%, 72% 96%, 64% 99%, 56% 96.8%, 48% 99.6%, 40% 97.4%, 32% 100%, 24% 97.6%, 17% 99.8%, 10% 97.4%, 4% 99.4%, 0% 98%);"></canvas>
     <div data-reveal class="rfy-frase-inner">
@@ -410,7 +385,6 @@
 
   <section id="bandas" class="rfy-bandas">
     <div class="rfy-shape rfy-shape--pink" style="inset: -12px 0 -14px; clip-path: polygon(0% 3.8%, 8% 1%, 16% 3.6%, 24% 0.8%, 33% 3.4%, 41% 0.6%, 50% 3.2%, 58% 0.4%, 66% 3%, 75% 0.6%, 83% 3.2%, 91% 0.8%, 100% 3.4%, 100% 95.6%, 92% 98.4%, 83% 95.4%, 75% 98.2%, 66% 95.2%, 58% 98%, 49% 95%, 41% 97.8%, 32% 94.8%, 24% 97.6%, 15% 94.8%, 7% 97.4%, 0% 95%);"></div>
-    <canvas class="rfy-shape-canvas" id="rfy-canvas-bandas-pink" aria-hidden="true" style="inset: -12px 0 -14px; clip-path: polygon(0% 3.8%, 8% 1%, 16% 3.6%, 24% 0.8%, 33% 3.4%, 41% 0.6%, 50% 3.2%, 58% 0.4%, 66% 3%, 75% 0.6%, 83% 3.2%, 91% 0.8%, 100% 3.4%, 100% 95.6%, 92% 98.4%, 83% 95.4%, 75% 98.2%, 66% 95.2%, 58% 98%, 49% 95%, 41% 97.8%, 32% 94.8%, 24% 97.6%, 15% 94.8%, 7% 97.4%, 0% 95%);"></canvas>
     <div class="rfy-shape rfy-shape--orange" style="clip-path: polygon(0% 1.2%, 6% 3.4%, 13% 0.6%, 20% 2.8%, 27% 0.2%, 35% 2.4%, 42% 0%, 50% 2.2%, 58% 0.4%, 66% 3%, 74% 0.8%, 82% 3.4%, 89% 1%, 95% 3.6%, 100% 1.8%, 100% 98%, 95% 96%, 88% 99.2%, 80% 96.6%, 72% 99.6%, 64% 97%, 56% 99.8%, 48% 97.2%, 40% 100%, 31% 97.4%, 23% 99.8%, 15% 97.2%, 8% 99.4%, 0% 97%);"></div>
     <canvas class="rfy-shape-canvas" id="rfy-canvas-bandas-orange" aria-hidden="true" style="clip-path: polygon(0% 1.2%, 6% 3.4%, 13% 0.6%, 20% 2.8%, 27% 0.2%, 35% 2.4%, 42% 0%, 50% 2.2%, 58% 0.4%, 66% 3%, 74% 0.8%, 82% 3.4%, 89% 1%, 95% 3.6%, 100% 1.8%, 100% 98%, 95% 96%, 88% 99.2%, 80% 96.6%, 72% 99.6%, 64% 97%, 56% 99.8%, 48% 97.2%, 40% 100%, 31% 97.4%, 23% 99.8%, 15% 97.2%, 8% 99.4%, 0% 97%);"></canvas>
     <div data-reveal class="rfy-bandas-inner">
@@ -509,28 +483,6 @@
     <span>Marcas e personagens pertencem aos seus titulares</span>
   </div>
 </footer>
-
-<!-- TEMP debug tuning panel — remove before final delivery. Access via ?debug=1 -->
-<div id="rfy-debug">
-  <h3>Shader tuning (temp)</h3>
-  <label>Opacidade do hero <span id="rfy-debug-heroOpacity-val">0.42</span>
-    <input type="range" id="rfy-debug-heroOpacity" min="0" max="1" step="0.02" value="0.42" />
-  </label>
-  <label>Densidade da grade <span id="rfy-debug-gridBase-val">48</span>
-    <input type="range" id="rfy-debug-gridBase" min="16" max="140" step="2" value="48" />
-  </label>
-  <label>Contraste <span id="rfy-debug-contrast-val">1.15</span>
-    <input type="range" id="rfy-debug-contrast" min="0.5" max="2.5" step="0.05" value="1.15" />
-  </label>
-  <label>Tamanho dos pontos <span id="rfy-debug-dotScale-val">1.00</span>
-    <input type="range" id="rfy-debug-dotScale" min="0.2" max="1.8" step="0.05" value="1" />
-  </label>
-  <label>Força da ondulação <span id="rfy-debug-rippleAmt-val">1.00</span>
-    <input type="range" id="rfy-debug-rippleAmt" min="0" max="3" step="0.1" value="1" />
-  </label>
-  <button type="button" id="rfy-debug-copy">Copiar valores</button>
-  <div class="rfy-debug-note">Aplica em todas as 5 texturas (exceto opacidade, que é só do hero). Some com ?debug=1 na URL.</div>
-</div>
 
 <script>
   const WA_NUMBER = '5521994208796';
@@ -830,10 +782,10 @@
         uReducedMotion: { value: prefersReducedMotion ? 1 : 0 },
         uSeed: { value: opts.seed || 0 },
         uInvert: { value: opts.invert ? 1 : 0 },
-        uGridBase: { value: 48 },
-        uContrast: { value: 1.15 },
-        uDotScale: { value: 1.0 },
-        uRippleAmt: { value: 1.0 }
+        uGridBase: { value: opts.gridBase !== undefined ? opts.gridBase : 48 },
+        uContrast: { value: opts.contrast !== undefined ? opts.contrast : 1.15 },
+        uDotScale: { value: opts.dotScale !== undefined ? opts.dotScale : 1.0 },
+        uRippleAmt: { value: opts.rippleAmt !== undefined ? opts.rippleAmt : 1.0 }
       };
       const material = new THREE.ShaderMaterial({
         uniforms: this.uniforms,
@@ -941,42 +893,37 @@
     const heroCanvas = document.getElementById('rfy-canvas-hero');
     const heroPanel = new ShaderPanel({
       canvas: heroCanvas, mode: 'photo', texture: heroTexture,
-      colorA: '#0C0B0B', colorB: '#EFE9E0', colorC: '#EA3B21'
+      colorA: '#0C0B0B', colorB: '#EFE9E0', colorC: '#EA3B21',
+      gridBase: 140, contrast: 1.6, dotScale: 1.75, rippleAmt: 1.7
     });
     heroCanvas.classList.add('is-active');
     heroPanel.resize();
     shaderPanels.push(heroPanel);
     bindHover(document.getElementById('top'), [heroPanel]);
 
-    const frasePinkPanel = new ShaderPanel({
-      canvas: document.getElementById('rfy-canvas-frase-pink'), mode: 'procedural',
-      colorA: '#0C0B0B', colorB: '#F7D9CF', colorC: '#EA3B21', seed: 0, invert: true
-    });
+    // Only the front "orange" layer of each section gets the shader — the
+    // "pink" layer behind it is just a thin torn-paper edge reveal and must
+    // stay a flat solid color (a shader on it made dots bleed into what
+    // should read as a clean cream border).
     const fraseOrangePanel = new ShaderPanel({
       canvas: document.getElementById('rfy-canvas-frase-orange'), mode: 'procedural',
-      colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF', seed: 8, invert: true
+      colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF', seed: 8, invert: true,
+      gridBase: 18, contrast: 0.95, dotScale: 1.05, rippleAmt: 1.7
     });
-    document.getElementById('rfy-canvas-frase-pink').classList.add('is-active');
     document.getElementById('rfy-canvas-frase-orange').classList.add('is-active');
-    frasePinkPanel.resize();
     fraseOrangePanel.resize();
-    shaderPanels.push(frasePinkPanel, fraseOrangePanel);
-    bindHover(document.getElementById('frase'), [frasePinkPanel, fraseOrangePanel]);
+    shaderPanels.push(fraseOrangePanel);
+    bindHover(document.getElementById('frase'), [fraseOrangePanel]);
 
-    const bandasPinkPanel = new ShaderPanel({
-      canvas: document.getElementById('rfy-canvas-bandas-pink'), mode: 'procedural',
-      colorA: '#0C0B0B', colorB: '#F7D9CF', colorC: '#EA3B21', seed: 16, invert: true
-    });
     const bandasOrangePanel = new ShaderPanel({
       canvas: document.getElementById('rfy-canvas-bandas-orange'), mode: 'procedural',
-      colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF', seed: 24, invert: true
+      colorA: '#0C0B0B', colorB: '#EA3B21', colorC: '#F7D9CF', seed: 24, invert: true,
+      gridBase: 18, contrast: 0.95, dotScale: 1.05, rippleAmt: 1.7
     });
-    document.getElementById('rfy-canvas-bandas-pink').classList.add('is-active');
     document.getElementById('rfy-canvas-bandas-orange').classList.add('is-active');
-    bandasPinkPanel.resize();
     bandasOrangePanel.resize();
-    shaderPanels.push(bandasPinkPanel, bandasOrangePanel);
-    bindHover(document.getElementById('bandas'), [bandasPinkPanel, bandasOrangePanel]);
+    shaderPanels.push(bandasOrangePanel);
+    bindHover(document.getElementById('bandas'), [bandasOrangePanel]);
 
     const visibilityObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -1005,47 +952,6 @@
     console.warn('Rock For You: shader textures disabled —', err.message);
   }
 
-  // TEMP debug tuning panel — remove before final delivery.
-  if (new URLSearchParams(location.search).get('debug') === '1') {
-    const panel = document.getElementById('rfy-debug');
-    panel.classList.add('is-on');
-    const heroCanvasEl = document.getElementById('rfy-canvas-hero');
-
-    function wireSlider(id, apply) {
-      const input = document.getElementById('rfy-debug-' + id);
-      const label = document.getElementById('rfy-debug-' + id + '-val');
-      input.addEventListener('input', () => {
-        const v = parseFloat(input.value);
-        label.textContent = v.toFixed(2);
-        apply(v);
-      });
-    }
-
-    wireSlider('heroOpacity', (v) => { if (heroCanvasEl) heroCanvasEl.style.opacity = v; });
-    wireSlider('gridBase', (v) => shaderPanels.forEach((p) => { p.uniforms.uGridBase.value = v; }));
-    wireSlider('contrast', (v) => shaderPanels.forEach((p) => { p.uniforms.uContrast.value = v; }));
-    wireSlider('dotScale', (v) => shaderPanels.forEach((p) => { p.uniforms.uDotScale.value = v; }));
-    wireSlider('rippleAmt', (v) => shaderPanels.forEach((p) => { p.uniforms.uRippleAmt.value = v; }));
-
-    document.getElementById('rfy-debug-copy').addEventListener('click', () => {
-      const values = {
-        heroOpacity: parseFloat(document.getElementById('rfy-debug-heroOpacity').value),
-        gridBase: parseFloat(document.getElementById('rfy-debug-gridBase').value),
-        contrast: parseFloat(document.getElementById('rfy-debug-contrast').value),
-        dotScale: parseFloat(document.getElementById('rfy-debug-dotScale').value),
-        rippleAmt: parseFloat(document.getElementById('rfy-debug-rippleAmt').value)
-      };
-      const text = JSON.stringify(values, null, 2);
-      console.log('Rock For You shader tuning values:', text);
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).catch(() => {});
-      }
-      const btn = document.getElementById('rfy-debug-copy');
-      const original = btn.textContent;
-      btn.textContent = 'Copiado! (ver console)';
-      setTimeout(() => { btn.textContent = original; }, 1500);
-    });
-  }
 </script>
 </body>
 </html>
