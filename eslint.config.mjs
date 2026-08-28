@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored/generated runtime for a design-tool source artifact, not our code.
+    "public/landing-pages/rock/support.js",
   ]),
 ]);
 
