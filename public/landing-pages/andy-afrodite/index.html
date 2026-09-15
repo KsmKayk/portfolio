@@ -188,6 +188,25 @@
     <div id="aa-gallery-grid" style="column-count:3;column-gap:14px"></div>
   </section>
 
+  <section id="faq" style="position:relative;padding:clamp(80px,10vw,140px) clamp(28px,6vw,90px) clamp(80px,10vw,140px) clamp(64px,9vw,140px);border-top:1px solid rgba(236,233,228,.08)">
+    <div style="position:absolute;left:clamp(64px,9vw,140px);bottom:6%;font-family:'Cinzel',serif;font-size:clamp(60px,11vw,160px);color:rgba(236,233,228,.03);pointer-events:none;user-select:none">ΛΟΓΟΣ</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(32px,5vw,70px);align-items:start;position:relative">
+      <div data-reveal>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;color:var(--aa-accent)">03</span>
+          <span style="width:36px;height:1px;background:rgba(236,233,228,.3)"></span>
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(236,233,228,.6)">Perguntas frequentes</span>
+        </div>
+        <h2 style="margin:0 0 20px;font-family:'Cinzel',serif;font-weight:400;font-size:clamp(28px,3.8vw,50px);line-height:1.12">O que as lojas<br />perguntam antes<br />de fechar</h2>
+        <p style="margin:0;font-size:18px;line-height:1.66;color:rgba(236,233,228,.55);max-width:38ch">Não achou sua dúvida? Manda no WhatsApp que respondo no mesmo dia.</p>
+      </div>
+      <div data-reveal>
+        <div id="aa-faq-list"></div>
+        <div style="border-top:1px solid rgba(236,233,228,.12)"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- AA:SECTIONS:INSERT -->
 
   <footer style="border-top:1px solid rgba(236,233,228,.1);padding:36px clamp(28px,6vw,90px) 40px clamp(64px,9vw,140px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
@@ -260,6 +279,40 @@
 
   renderAaFilters();
   renderAaGallery();
+
+  var AA_FAQ = [
+    ["Como funciona o orçamento?", "O valor depende da quantidade de peças, do formato (foto, vídeo ou os dois) e de onde as imagens vão ser usadas. Me manda o briefing no WhatsApp e devolvo uma proposta fechada, sem surpresa depois."],
+    ["Você atende marcas de outras cidades?", "Sim. A loja envia as peças pelo correio, eu produzo aqui e devolvo tudo junto com as imagens. O frete de ida e volta entra no combinado."],
+    ["Em quanto tempo as fotos ficam prontas?", "Prévias em até 48h depois da produção e o material final tratado em até 7 dias. Se a campanha for urgente, dá para acelerar com taxa de prioridade."],
+    ["As peças voltam para a loja depois?", "Voltam, em perfeito estado e na embalagem original. Uso protetor de maquiagem e não corto etiqueta. Se a marca preferir deixar a peça comigo, isso abate parte do cachê."],
+    ["Quais tamanhos você veste?", "Confira a ficha técnica acima. Trabalho bem com modelagens plus e com peças de tamanho único, corset e lace-up — que são as mais comuns no nicho alternativo."],
+    ["Você faz vídeo além de foto?", "Faço. Reels, try-on haul e cortes verticais prontos para Instagram e TikTok, já no formato 9:16 e com áudio limpo. Vídeo pode ser contratado junto com o catálogo ou separado."],
+    ["Por quanto tempo a marca pode usar as imagens?", "O padrão é uso livre nas redes e no e-commerce da loja por 12 meses, com crédito. Uso em anúncio pago, outdoor ou período ilimitado é negociado à parte."],
+    ["Trabalha por permuta?", "Avalio caso a caso, principalmente com marcas pequenas do nicho que combinem com o meu perfil. Produções maiores e conteúdo em vídeo eu faço só como trabalho pago."]
+  ];
+  var aaOpenFaq = -1;
+  var aaFaqListEl = document.getElementById('aa-faq-list');
+
+  function renderAaFaq() {
+    aaFaqListEl.innerHTML = AA_FAQ.map(function (pair, i) {
+      var num = String(i + 1).padStart(2, '0');
+      return '<div class="aa-faq-item' + (aaOpenFaq === i ? ' is-open' : '') + '" data-i="' + i + '">' +
+        '<button type="button" class="aa-faq-head">' +
+          '<span style="font-family:\'Space Mono\',monospace;font-size:10px;letter-spacing:.2em;color:rgba(255,77,141,.7);flex:none">' + num + '</span>' +
+          '<span style="flex:1;font-family:\'Cormorant Garamond\',serif;font-size:clamp(18px,1.7vw,22px);line-height:1.4">' + pair[0] + '</span>' +
+          '<span class="aa-faq-icon">+</span>' +
+        '</button>' +
+        '<div class="aa-faq-body"><p style="margin:0;padding:0 0 24px 34px;font-size:17px;line-height:1.66;color:rgba(236,233,228,.62);max-width:60ch">' + pair[1] + '</p></div>' +
+      '</div>';
+    }).join('');
+    Array.prototype.forEach.call(aaFaqListEl.querySelectorAll('.aa-faq-head'), function (btn, i) {
+      btn.addEventListener('click', function () {
+        aaOpenFaq = aaOpenFaq === i ? -1 : i;
+        renderAaFaq();
+      });
+    });
+  }
+  renderAaFaq();
 
   // AA:SCRIPT:INSERT
 </script>
