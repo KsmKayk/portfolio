@@ -201,6 +201,25 @@
     </div>
   </section>
 
+  <section id="protocolos" style="position:relative;z-index:4;padding:clamp(56px,10vh,120px) clamp(16px,4vw,56px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(32px,5vw,72px);align-items:start">
+      <div style="position:sticky;top:clamp(90px,14vh,140px)">
+        <p data-bs-rise style="margin:0 0 18px;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#c2708f">Protocolos</p>
+        <h2 data-bs-rise style="margin:0 0 26px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(32px,4.6vw,66px);line-height:1.04;letter-spacing:-.02em">
+          Sete caminhos.<br /><em style="font-style:italic">Um por vez.</em>
+        </h2>
+        <p data-bs-rise style="margin:0 0 28px;font-size:15px;line-height:1.7;color:#5f5d5b;max-width:40ch;font-weight:300">
+          Cada um tem indicação, tempo e intervalo próprios. Na avaliação a gente decide qual combinação a sua pele aceita agora.
+        </p>
+        <div data-bs-rise style="position:relative;width:100%;aspect-ratio:4/5;max-width:380px;border-radius:18px;overflow:hidden;background:#0b0b0c">
+          <img src="uploads/protocolos.png" alt="Detalhe do procedimento" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+      </div>
+
+      <ul id="bs-protocol-list" style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(11,11,12,.14)"></ul>
+    </div>
+  </section>
+
   <!-- BS:SECTIONS:INSERT -->
 </div>
 
@@ -216,6 +235,28 @@
   document.querySelector('[data-bs-float-cta]').href = WA_HREF;
 
   document.getElementById('bs-hero-wa').href = WA_HREF;
+
+  var BS_PROTOCOLOS = [
+    { num: '01', nome: 'Limpeza de pele profunda', desc: 'Extração, vapor e ativos calmantes. A base de qualquer protocolo mais longo.', tempo: '60 min' },
+    { num: '02', nome: 'Peeling químico', desc: 'Renovação controlada para manchas, textura irregular e marcas de acne.', tempo: '45 min' },
+    { num: '03', nome: 'Microagulhamento', desc: 'Estímulo de colágeno para cicatrizes, poros dilatados e firmeza.', tempo: '75 min' },
+    { num: '04', nome: 'Skinbooster', desc: 'Ácido hialurônico injetável para hidratação profunda e viço real.', tempo: '50 min' },
+    { num: '05', nome: 'Toxina botulínica', desc: 'Linhas de expressão suavizadas com dose calculada, sem congelar o rosto.', tempo: '40 min' },
+    { num: '06', nome: 'Preenchimento labial', desc: 'Volume e contorno respeitando a sua proporção. Resultado natural.', tempo: '60 min' },
+    { num: '07', nome: 'Design de sobrancelhas', desc: 'Mapeamento do traço ideal para a sua estrutura óssea e olhar.', tempo: '40 min' }
+  ];
+  document.getElementById('bs-protocol-list').innerHTML = BS_PROTOCOLOS.map(function (p) {
+    return '<li class="bs-row" data-bs-row style="border-bottom:1px solid rgba(11,11,12,.14);transition:background .35s ease">' +
+      '<div style="display:flex;align-items:baseline;gap:clamp(14px,2vw,28px);padding:clamp(20px,2.6vw,32px) clamp(8px,1.4vw,20px)">' +
+        '<span style="font-size:11px;letter-spacing:.2em;color:#c2708f;min-width:28px;font-variant-numeric:tabular-nums">' + p.num + '</span>' +
+        '<div style="flex:1;min-width:0">' +
+          '<h3 style="margin:0;font-family:\'Bodoni Moda\',serif;font-weight:400;font-size:clamp(22px,2.8vw,38px);line-height:1.1">' + p.nome + '</h3>' +
+          '<p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:#5f5d5b;max-width:48ch;font-weight:300">' + p.desc + '</p>' +
+        '</div>' +
+        '<span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8a8785;white-space:nowrap">' + p.tempo + '</span>' +
+      '</div>' +
+    '</li>';
+  }).join('');
 
   // BS:SCRIPT:INSERT
 </script>
