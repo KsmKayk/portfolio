@@ -142,7 +142,14 @@
   .hs-depoimento-quote { margin: 0 0 22px; font-family: var(--hs-font-serif); font-size: 22px; line-height: 1.45; font-style: italic; color: var(--hs-panel); }
   .hs-depoimento-author { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #B8A49E; }
 
-  /* HS:STYLES:INSERT */
+  .hs-cta-final { position: relative; padding: 110px 24px; background-image: linear-gradient(rgba(28,20,18,0.55), rgba(28,20,18,0.55)), url('uploads/cta-bg.jpg'); background-size: cover; background-position: center; text-align: center; color: #fff; }
+  .hs-cta-final-inner { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .hs-cta-eyebrow { font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--hs-gold); }
+  .hs-cta-title { margin: 0; font-family: var(--hs-font-serif); font-size: clamp(38px, 5vw, 64px); font-weight: 600; line-height: 1.05; }
+  .hs-cta-desc { margin: 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.88); max-width: 520px; }
+  .hs-btn-cta-final { display: inline-flex; align-items: center; gap: 12px; background: var(--hs-accent); color: #fff; padding: 21px 42px; border-radius: 999px; font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; box-shadow: 0 16px 40px rgba(0,0,0,0.35); transition: background 0.25s ease, color 0.25s ease; }
+  .hs-btn-cta-final:hover { background: var(--hs-gold); color: var(--hs-text); }
+  .hs-cta-addr { font-size: 13px; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); }
 </style>
 </head>
 <body>
@@ -402,7 +409,15 @@
     </div>
   </section>
 
-  <!-- HS:SECTIONS:INSERT -->
+  <section class="hs-cta-final">
+    <div data-reveal class="hs-cta-final-inner">
+      <div class="hs-cta-eyebrow">Agenda aberta desta semana</div>
+      <h2 class="hs-cta-title">Chame no WhatsApp e<br />garanta seu horário</h2>
+      <p class="hs-cta-desc">Diga o serviço, o profissional e o melhor dia. A gente confirma na hora e envia um lembrete um dia antes.</p>
+      <a href="#" id="hs-cta-final-wa" class="hs-btn-cta-final" target="_blank" rel="noopener">Falar com o salão agora <span style="font-size: 18px;">→</span></a>
+      <div class="hs-cta-addr">Rua das Palmeiras, 148 · Vila Madalena, São Paulo</div>
+    </div>
+  </section>
 </main>
 
 <footer class="hs-footer">
@@ -461,7 +476,24 @@
 
   document.getElementById('hs-galeria-wa').href = waLink('Olá! Vi os trabalhos no site e queria um resultado parecido. Podem me ajudar?');
 
-  // HS:SCRIPT:INSERT
+  document.getElementById('hs-cta-final-wa').href = WA_FINAL;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('[data-reveal]').forEach((el) => {
+    if (prefersReducedMotion) {
+      el.classList.add('is-visible');
+    } else {
+      revealObserver.observe(el);
+    }
+  });
 </script>
 </body>
 </html>
