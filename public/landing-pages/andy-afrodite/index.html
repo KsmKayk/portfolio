@@ -172,6 +172,22 @@
     </div>
   </section>
 
+  <section id="galeria" style="position:relative;padding:clamp(70px,9vw,120px) clamp(28px,6vw,90px) clamp(80px,10vw,140px) clamp(64px,9vw,140px);border-top:1px solid rgba(236,233,228,.08)">
+    <div data-reveal style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:44px">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;color:var(--aa-accent)">02</span>
+          <span style="width:36px;height:1px;background:rgba(236,233,228,.3)"></span>
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(236,233,228,.6)">Galeria</span>
+        </div>
+        <h2 style="margin:0;font-family:'Cinzel',serif;font-weight:400;font-size:clamp(30px,4.4vw,58px);line-height:1.1">Trabalhos <span style="color:rgba(236,233,228,.45)">selecionados</span></h2>
+      </div>
+      <div id="aa-filters" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+    </div>
+
+    <div id="aa-gallery-grid" style="column-count:3;column-gap:14px"></div>
+  </section>
+
   <!-- AA:SECTIONS:INSERT -->
 
   <footer style="border-top:1px solid rgba(236,233,228,.1);padding:36px clamp(28px,6vw,90px) 40px clamp(64px,9vw,140px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
@@ -191,6 +207,59 @@
   }
 
   document.getElementById('aa-hero-wa').href = waLink('Olá! Vim pelo site e gostaria de um orçamento.');
+
+  var AA_CATEGORIES = ["Tudo", "Catálogo", "Editorial", "Reels", "Detalhe de peça"];
+  var AA_GALLERY_BASE = [
+    { cat: "Catálogo", h: 380 }, { cat: "Editorial", h: 520 }, { cat: "Reels", h: 620 },
+    { cat: "Detalhe de peça", h: 300 }, { cat: "Catálogo", h: 480 }, { cat: "Editorial", h: 340 },
+    { cat: "Reels", h: 600 }, { cat: "Detalhe de peça", h: 360 }, { cat: "Catálogo", h: 520 }
+  ];
+  function aaGalleryLabel(cat) {
+    if (cat === "Reels") return "vídeo vertical 9:16";
+    if (cat === "Detalhe de peça") return "close do produto";
+    return "foto " + cat.toLowerCase();
+  }
+  var aaActiveFilter = "Tudo";
+  var aaFiltersEl = document.getElementById('aa-filters');
+  var aaGridEl = document.getElementById('aa-gallery-grid');
+
+  function renderAaFilters() {
+    aaFiltersEl.innerHTML = AA_CATEGORIES.map(function (c) {
+      return '<button type="button" class="aa-filter-btn' + (c === aaActiveFilter ? ' is-active' : '') + '" data-cat="' + c + '">' + c + '</button>';
+    }).join('');
+    Array.prototype.forEach.call(aaFiltersEl.querySelectorAll('.aa-filter-btn'), function (btn) {
+      btn.addEventListener('click', function () {
+        aaActiveFilter = btn.dataset.cat;
+        renderAaFilters();
+        renderAaGallery();
+      });
+    });
+  }
+
+  function renderAaGallery() {
+    var items = AA_GALLERY_BASE.filter(function (i) { return aaActiveFilter === "Tudo" || i.cat === aaActiveFilter; });
+    aaGridEl.innerHTML = items.map(function (item, n) {
+      var label = aaGalleryLabel(item.cat);
+      var num = String(n + 1).padStart(2, '0');
+      var wrapStyle = 'break-inside:avoid;margin:0 0 14px;display:block;animation:fadeUp .7s ' + (n * 0.06).toFixed(2) + 's both';
+      var boxStyle = 'position:relative;display:flex;align-items:center;justify-content:center;height:' + item.h + 'px;background:linear-gradient(160deg,rgba(236,233,228,.05),rgba(236,233,228,.015));border:1px solid rgba(236,233,228,.12);overflow:hidden';
+      return '<figure style="' + wrapStyle + '">' +
+        '<div style="' + boxStyle + '">' +
+          '<div style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(236,233,228,.05) 0 2px,transparent 2px 9px)"></div>' +
+          '<div style="position:relative;text-align:center;padding:16px">' +
+            '<div style="font-family:\'Space Mono\',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(236,233,228,.55)">' + label + '</div>' +
+            '<div style="font-family:\'Space Mono\',monospace;font-size:9px;letter-spacing:.16em;color:rgba(236,233,228,.3);margin-top:8px">arraste a foto aqui</div>' +
+          '</div>' +
+        '</div>' +
+        '<figcaption style="display:flex;justify-content:space-between;gap:12px;padding:10px 2px 0;font-family:\'Space Mono\',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(236,233,228,.42)">' +
+          '<span>' + item.cat + '</span><span>' + num + '</span>' +
+        '</figcaption>' +
+      '</figure>';
+    }).join('');
+  }
+
+  renderAaFilters();
+  renderAaGallery();
 
   // AA:SCRIPT:INSERT
 </script>
