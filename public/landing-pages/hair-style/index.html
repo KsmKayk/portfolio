@@ -62,6 +62,50 @@
   .hs-fab { position: fixed; right: 22px; bottom: 22px; z-index: 60; display: inline-flex; align-items: center; gap: 10px; background: var(--hs-accent); color: #fff; padding: 16px 24px; border-radius: 999px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 14px 34px rgba(178,67,66,0.4); transition: background 0.2s ease; }
   .hs-fab:hover { background: var(--hs-accent-hover); color: #fff; }
 
+  .hs-hero { position: relative; min-height: 640px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); align-items: stretch; background: var(--hs-panel); }
+  .hs-hero-copy { display: flex; flex-direction: column; justify-content: center; gap: 26px; padding: 84px 48px; max-width: 680px; margin-left: auto; width: 100%; }
+  .hs-hero-kicker { display: flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--hs-accent); }
+  .hs-hero-kicker-line { width: 34px; height: 1px; background: var(--hs-gold); }
+  .hs-hero-title { margin: 0; font-family: var(--hs-font-serif); font-size: clamp(46px, 6vw, 82px); line-height: 0.98; font-weight: 600; color: var(--hs-text); }
+  .hs-hero-title em { font-style: italic; color: var(--hs-accent); }
+  .hs-hero-desc { margin: 0; font-size: 17px; line-height: 1.65; color: var(--hs-body-muted); max-width: 460px; }
+  .hs-hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .hs-btn-primary-lg { display: inline-flex; align-items: center; gap: 12px; background: var(--hs-accent); color: #fff; padding: 19px 34px; border-radius: 999px; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; box-shadow: 0 14px 34px rgba(178,67,66,0.32); transition: background 0.25s ease, transform 0.25s ease; }
+  .hs-btn-primary-lg:hover { background: var(--hs-accent-hover); color: #fff; transform: translateY(-2px); }
+  .hs-btn-outline { display: inline-flex; align-items: center; gap: 10px; color: var(--hs-text); padding: 19px 28px; border-radius: 999px; border: 1px solid rgba(28,20,18,0.18); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; transition: border-color 0.2s ease, color 0.2s ease; }
+  .hs-btn-outline:hover { border-color: var(--hs-gold); color: var(--hs-accent); }
+  .hs-hero-stats { display: flex; flex-wrap: wrap; gap: 34px; padding-top: 14px; border-top: 1px solid rgba(28,20,18,0.1); }
+  .hs-stat-num { font-family: var(--hs-font-serif); font-size: 34px; color: var(--hs-accent); line-height: 1; }
+  .hs-stat-label { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--hs-body-mute2); margin-top: 6px; }
+  .hs-hero-photo { position: relative; min-height: 520px; background-image: url('uploads/hero.jpg'); background-size: cover; background-position: center 35%; }
+  .hs-hero-photo-fade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(243,235,229,0.9) 0%, rgba(243,235,229,0) 22%); }
+  .hs-hero-badge { position: absolute; left: 32px; bottom: 32px; background: rgba(251,248,245,0.94); border-radius: 18px; padding: 18px 22px; display: flex; align-items: center; gap: 14px; box-shadow: 0 18px 40px rgba(28,20,18,0.18); }
+  .hs-hero-badge-icon { width: 42px; height: 42px; border-radius: 50%; background: var(--hs-accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .hs-hero-badge-title { font-size: 14px; font-weight: 500; color: var(--hs-text); }
+  .hs-hero-badge-sub { font-size: 13px; color: var(--hs-body-mute2); }
+
+  .hs-marquee { background: var(--hs-accent); color: var(--hs-bg); padding: 20px 24px; }
+  .hs-marquee-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 48px; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--hs-bg); }
+  .hs-marquee-inner span.hs-sep { opacity: 0.4; }
+
+  .hs-section { max-width: 1240px; margin: 0 auto; padding: 96px 24px; }
+  .hs-section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 46px; }
+  .hs-eyebrow { font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--hs-accent); margin-bottom: 14px; }
+  .hs-h2 { margin: 0; font-family: var(--hs-font-serif); font-size: clamp(36px, 4.4vw, 58px); font-weight: 600; line-height: 1.05; color: var(--hs-text); }
+  .hs-section-lead { margin: 0; max-width: 340px; font-size: 16px; line-height: 1.65; color: var(--hs-body-muted); }
+
+  .hs-servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+  .hs-card { background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid rgba(28,20,18,0.07); display: flex; flex-direction: column; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .hs-card:hover { transform: translateY(-4px); box-shadow: 0 20px 42px rgba(28,20,18,0.12); }
+  .hs-card-img { height: 230px; overflow: hidden; background: #E8DDD5; }
+  .hs-card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .hs-card-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .hs-card-title { margin: 0; font-family: var(--hs-font-serif); font-size: 27px; font-weight: 600; color: var(--hs-text); }
+  .hs-card-desc { margin: 0; font-size: 15px; line-height: 1.6; color: var(--hs-body-mute2); flex: 1; }
+  .hs-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: nowrap; padding-top: 14px; border-top: 1px solid rgba(28,20,18,0.08); }
+  .hs-card-price { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hs-gold-label); white-space: nowrap; }
+  .hs-card-link { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--hs-accent); white-space: nowrap; }
+
   /* HS:STYLES:INSERT */
 </style>
 </head>
@@ -88,6 +132,90 @@
 </header>
 
 <main>
+  <section id="top" class="hs-hero">
+    <div class="hs-hero-copy">
+      <div data-reveal class="hs-hero-kicker">
+        <span class="hs-hero-kicker-line"></span>
+        Salão de beleza · Vila Madalena
+      </div>
+      <h1 data-reveal class="hs-hero-title">Seu cabelo do jeito<br />que você sempre<br /><em>imaginou.</em></h1>
+      <p data-reveal class="hs-hero-desc">Corte, coloração e tratamento com profissionais especialistas. Agenda organizada, horário garantido e diagnóstico personalizado antes de qualquer serviço.</p>
+      <div data-reveal class="hs-hero-ctas">
+        <a href="#" id="hs-hero-wa" class="hs-btn-primary-lg" target="_blank" rel="noopener">Agendar meu horário <span style="font-size: 17px;">→</span></a>
+        <a href="#equipe" class="hs-btn-outline">Ver horários da equipe</a>
+      </div>
+      <div data-reveal class="hs-hero-stats">
+        <div><div class="hs-stat-num">12 anos</div><div class="hs-stat-label">no bairro</div></div>
+        <div><div class="hs-stat-num">4.9 ★</div><div class="hs-stat-label">+800 avaliações</div></div>
+        <div><div class="hs-stat-num">6</div><div class="hs-stat-label">especialistas</div></div>
+      </div>
+    </div>
+    <div class="hs-hero-photo">
+      <div class="hs-hero-photo-fade"></div>
+      <div class="hs-hero-badge">
+        <div class="hs-hero-badge-icon">✓</div>
+        <div>
+          <div class="hs-hero-badge-title">Resposta em até 5 minutos</div>
+          <div class="hs-hero-badge-sub">Atendimento pelo WhatsApp, seg a sáb</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hs-marquee">
+    <div class="hs-marquee-inner">
+      <span>Coloração</span><span class="hs-sep">·</span>
+      <span>Mechas &amp; Loiros</span><span class="hs-sep">·</span>
+      <span>Corte feminino e masculino</span><span class="hs-sep">·</span>
+      <span>Tratamentos</span><span class="hs-sep">·</span>
+      <span>Penteados</span>
+    </div>
+  </div>
+
+  <section id="servicos" class="hs-section">
+    <div data-reveal class="hs-section-head">
+      <div>
+        <div class="hs-eyebrow">Nossos serviços</div>
+        <h2 class="hs-h2">Tudo o que seu cabelo<br />precisa, em um só lugar</h2>
+      </div>
+      <p class="hs-section-lead">Cada serviço começa com uma avaliação do fio. Você recebe o orçamento fechado antes de iniciar.</p>
+    </div>
+    <div class="hs-servicos-grid">
+      <article data-reveal class="hs-card">
+        <div class="hs-card-img"><img src="uploads/servico-corte.jpg" alt="" loading="lazy" /></div>
+        <div class="hs-card-body">
+          <h3 class="hs-card-title">Corte & Finalização</h3>
+          <p class="hs-card-desc">Corte desenhado para o seu formato de rosto, com finalização e orientação de manutenção em casa.</p>
+          <div class="hs-card-foot"><span class="hs-card-price">Desde R$ 120</span><a href="#" class="hs-card-link hs-wa-servico" data-msg="Olá! Gostaria de agendar: Corte & Finalização.">Agendar →</a></div>
+        </div>
+      </article>
+      <article data-reveal class="hs-card">
+        <div class="hs-card-img"><img src="uploads/servico-coloracao.jpg" alt="" loading="lazy" /></div>
+        <div class="hs-card-body">
+          <h3 class="hs-card-title">Coloração</h3>
+          <p class="hs-card-desc">Cobertura de brancos, mudança de tom e retoque de raiz com produtos de baixa agressão ao fio.</p>
+          <div class="hs-card-foot"><span class="hs-card-price">Desde R$ 210</span><a href="#" class="hs-card-link hs-wa-servico" data-msg="Olá! Gostaria de agendar: Coloração.">Agendar →</a></div>
+        </div>
+      </article>
+      <article data-reveal class="hs-card">
+        <div class="hs-card-img"><img src="uploads/servico-mechas.jpg" alt="" loading="lazy" /></div>
+        <div class="hs-card-body">
+          <h3 class="hs-card-title">Mechas & Loiros</h3>
+          <p class="hs-card-desc">Balayage, luzes e morena iluminada com matização inclusa na sessão.</p>
+          <div class="hs-card-foot"><span class="hs-card-price">Desde R$ 390</span><a href="#" class="hs-card-link hs-wa-servico" data-msg="Olá! Gostaria de agendar: Mechas & Loiros.">Agendar →</a></div>
+        </div>
+      </article>
+      <article data-reveal class="hs-card">
+        <div class="hs-card-img"><img src="uploads/servico-tratamentos.jpg" alt="" loading="lazy" /></div>
+        <div class="hs-card-body">
+          <h3 class="hs-card-title">Tratamentos</h3>
+          <p class="hs-card-desc">Reconstrução, hidratação e selagem para cabelos com química ou pontas ressecadas.</p>
+          <div class="hs-card-foot"><span class="hs-card-price">Desde R$ 150</span><a href="#" class="hs-card-link hs-wa-servico" data-msg="Olá! Gostaria de agendar: Tratamentos.">Agendar →</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- HS:SECTIONS:INSERT -->
 </main>
 
@@ -135,6 +263,11 @@
   document.getElementById('hs-header-wa').href = WA_HERO;
   document.getElementById('hs-footer-wa').href = WA_FINAL;
   document.getElementById('hs-fab-wa').href = WA_FINAL;
+
+  document.getElementById('hs-hero-wa').href = WA_HERO;
+  document.querySelectorAll('.hs-wa-servico').forEach((el) => {
+    el.href = waLink(el.dataset.msg);
+  });
 
   // HS:SCRIPT:INSERT
 </script>
