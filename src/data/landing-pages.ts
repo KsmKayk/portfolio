@@ -48,4 +48,12 @@ export const landingPages: LandingPage[] = [
     logo: '/landing-pages/andy-afrodite/andy-logo.svg',
     url: '/landing-pages/andy-afrodite',
   },
+  {
+    slug: 'beauty-studios',
+    title: 'Beauty Studios',
+    desc: 'Landing page para clínica de estética avançada, com protocolos, comparador de antes e depois interativo, investimento e agendamento via WhatsApp.',
+    thumbnail: '/landing-pages/beauty-studios/thumbnail.webp',
+    logo: '/landing-pages/beauty-studios/uploads/logo.png',
+    url: '/landing-pages/beauty-studios',
+  },
 ];
