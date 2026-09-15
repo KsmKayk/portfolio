@@ -106,6 +106,26 @@
   .hs-card-price { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hs-gold-label); white-space: nowrap; }
   .hs-card-link { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--hs-accent); white-space: nowrap; }
 
+  .hs-equipe { background: var(--hs-panel); padding: 96px 24px; }
+  .hs-equipe-inner { max-width: 1240px; margin: 0 auto; }
+  .hs-equipe-head { text-align: center; max-width: 620px; margin: 0 auto 50px; }
+  .hs-equipe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; }
+  .hs-team-card { background: #fff; border-radius: 22px; overflow: hidden; border: 1px solid rgba(28,20,18,0.07); display: flex; flex-direction: column; }
+  .hs-team-photo { position: relative; height: 290px; overflow: hidden; background: #E8DDD5; }
+  .hs-team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+  .hs-team-badge { position: absolute; left: 16px; top: 16px; background: rgba(251,248,245,0.95); color: var(--hs-accent); padding: 7px 14px; border-radius: 999px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+  .hs-team-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .hs-team-name { margin: 0 0 4px; font-family: var(--hs-font-serif); font-size: 28px; font-weight: 600; color: var(--hs-text); }
+  .hs-team-bio { margin: 0; font-size: 14px; line-height: 1.55; color: var(--hs-body-mute2); }
+  .hs-team-agenda-label { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--hs-gold-label); margin-bottom: 12px; }
+  .hs-team-agenda { display: flex; flex-direction: column; gap: 7px; }
+  .hs-team-agenda-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--hs-bg); border-radius: 10px; padding: 9px 14px; }
+  .hs-team-agenda-day { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--hs-text); font-weight: 500; }
+  .hs-team-agenda-hours { font-size: 14px; color: var(--hs-body-muted); font-variant-numeric: tabular-nums; }
+  .hs-team-folga { margin-top: 10px; font-size: 12px; color: var(--hs-faint); }
+  .hs-team-cta { margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--hs-text); color: #fff; padding: 15px 20px; border-radius: 999px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.2s ease; }
+  .hs-team-cta:hover { background: var(--hs-accent); color: #fff; }
+
   /* HS:STYLES:INSERT */
 </style>
 </head>
@@ -216,6 +236,120 @@
     </div>
   </section>
 
+  <section id="equipe" class="hs-equipe">
+    <div class="hs-equipe-inner">
+      <div data-reveal class="hs-equipe-head">
+        <div class="hs-eyebrow">A equipe</div>
+        <h2 class="hs-h2" style="margin-bottom: 16px;">Escolha o profissional<br />e o melhor horário</h2>
+        <p class="hs-section-lead" style="margin: 0 auto; max-width: none;">Confira os dias e horários de cada especialista. É só chamar no WhatsApp com o nome de quem você quer.</p>
+      </div>
+      <div class="hs-equipe-grid">
+        <article data-reveal class="hs-team-card">
+          <div class="hs-team-photo"><img src="uploads/equipe-camila.jpg" alt="" loading="lazy" /><span class="hs-team-badge">Colorista</span></div>
+          <div class="hs-team-body">
+            <div><h3 class="hs-team-name">Camila Duarte</h3><p class="hs-team-bio">Especialista em loiros e correção de cor. 9 anos de bancada.</p></div>
+            <div>
+              <div class="hs-team-agenda-label">Agenda da semana</div>
+              <div class="hs-team-agenda">
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Seg</span><span class="hs-team-agenda-hours">09h – 18h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Ter</span><span class="hs-team-agenda-hours">09h – 18h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Qui</span><span class="hs-team-agenda-hours">13h – 20h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Sáb</span><span class="hs-team-agenda-hours">09h – 16h</span></div>
+              </div>
+              <div class="hs-team-folga">Folga: quarta, sexta e domingo</div>
+            </div>
+            <a href="#" class="hs-team-cta hs-wa-equipe" data-msg="Olá! Gostaria de agendar um horário com Camila Duarte." target="_blank" rel="noopener">Agendar com Camila</a>
+          </div>
+        </article>
+        <article data-reveal class="hs-team-card">
+          <div class="hs-team-photo"><img src="uploads/equipe-rafael.jpg" alt="" loading="lazy" /><span class="hs-team-badge">Cortes</span></div>
+          <div class="hs-team-body">
+            <div><h3 class="hs-team-name">Rafael Monteiro</h3><p class="hs-team-bio">Cortes femininos e masculinos, barba e repicados estruturados.</p></div>
+            <div>
+              <div class="hs-team-agenda-label">Agenda da semana</div>
+              <div class="hs-team-agenda">
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Ter</span><span class="hs-team-agenda-hours">10h – 19h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Qua</span><span class="hs-team-agenda-hours">10h – 19h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Qui</span><span class="hs-team-agenda-hours">10h – 19h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Sex</span><span class="hs-team-agenda-hours">12h – 20h</span></div>
+              </div>
+              <div class="hs-team-folga">Folga: segunda, sábado e domingo</div>
+            </div>
+            <a href="#" class="hs-team-cta hs-wa-equipe" data-msg="Olá! Gostaria de agendar um horário com Rafael Monteiro." target="_blank" rel="noopener">Agendar com Rafael</a>
+          </div>
+        </article>
+        <article data-reveal class="hs-team-card">
+          <div class="hs-team-photo"><img src="uploads/equipe-leticia.jpg" alt="" loading="lazy" /><span class="hs-team-badge">Tratamentos</span></div>
+          <div class="hs-team-body">
+            <div><h3 class="hs-team-name">Letícia Prado</h3><p class="hs-team-bio">Reconstrução capilar e cuidado de cabelos com química.</p></div>
+            <div>
+              <div class="hs-team-agenda-label">Agenda da semana</div>
+              <div class="hs-team-agenda">
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Seg</span><span class="hs-team-agenda-hours">09h – 13h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Qua</span><span class="hs-team-agenda-hours">09h – 18h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Sex</span><span class="hs-team-agenda-hours">09h – 18h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Sáb</span><span class="hs-team-agenda-hours">09h – 15h</span></div>
+              </div>
+              <div class="hs-team-folga">Folga: terça, quinta e domingo</div>
+            </div>
+            <a href="#" class="hs-team-cta hs-wa-equipe" data-msg="Olá! Gostaria de agendar um horário com Letícia Prado." target="_blank" rel="noopener">Agendar com Letícia</a>
+          </div>
+        </article>
+        <article data-reveal class="hs-team-card">
+          <div class="hs-team-photo"><img src="uploads/equipe-bianca.jpg" alt="" loading="lazy" /><span class="hs-team-badge">Penteados</span></div>
+          <div class="hs-team-body">
+            <div><h3 class="hs-team-name">Bianca Rocha</h3><p class="hs-team-bio">Penteados de festa, noivas e maquiagem social.</p></div>
+            <div>
+              <div class="hs-team-agenda-label">Agenda da semana</div>
+              <div class="hs-team-agenda">
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Qua</span><span class="hs-team-agenda-hours">13h – 20h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Qui</span><span class="hs-team-agenda-hours">13h – 20h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Sex</span><span class="hs-team-agenda-hours">10h – 20h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Sáb</span><span class="hs-team-agenda-hours">08h – 18h</span></div>
+              </div>
+              <div class="hs-team-folga">Folga: segunda, terça e domingo</div>
+            </div>
+            <a href="#" class="hs-team-cta hs-wa-equipe" data-msg="Olá! Gostaria de agendar um horário com Bianca Rocha." target="_blank" rel="noopener">Agendar com Bianca</a>
+          </div>
+        </article>
+        <article data-reveal class="hs-team-card">
+          <div class="hs-team-photo"><img src="uploads/equipe-thiago.jpg" alt="" loading="lazy" /><span class="hs-team-badge">Barbearia</span></div>
+          <div class="hs-team-body">
+            <div><h3 class="hs-team-name">Thiago Alves</h3><p class="hs-team-bio">Corte masculino na máquina e navalha, barba e pigmentação.</p></div>
+            <div>
+              <div class="hs-team-agenda-label">Agenda da semana</div>
+              <div class="hs-team-agenda">
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Seg</span><span class="hs-team-agenda-hours">11h – 20h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Ter</span><span class="hs-team-agenda-hours">11h – 20h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Qui</span><span class="hs-team-agenda-hours">11h – 20h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Sáb</span><span class="hs-team-agenda-hours">09h – 17h</span></div>
+              </div>
+              <div class="hs-team-folga">Folga: quarta, sexta e domingo</div>
+            </div>
+            <a href="#" class="hs-team-cta hs-wa-equipe" data-msg="Olá! Gostaria de agendar um horário com Thiago Alves." target="_blank" rel="noopener">Agendar com Thiago</a>
+          </div>
+        </article>
+        <article data-reveal class="hs-team-card">
+          <div class="hs-team-photo"><img src="uploads/equipe-aline.jpg" alt="" loading="lazy" /><span class="hs-team-badge">Alisamentos</span></div>
+          <div class="hs-team-body">
+            <div><h3 class="hs-team-name">Aline Ferraz</h3><p class="hs-team-bio">Progressiva sem formol, botox capilar e escova definitiva.</p></div>
+            <div>
+              <div class="hs-team-agenda-label">Agenda da semana</div>
+              <div class="hs-team-agenda">
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Ter</span><span class="hs-team-agenda-hours">09h – 16h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Qua</span><span class="hs-team-agenda-hours">09h – 16h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Sex</span><span class="hs-team-agenda-hours">13h – 20h</span></div>
+                <div class="hs-team-agenda-row"><span class="hs-team-agenda-day">Sáb</span><span class="hs-team-agenda-hours">10h – 16h</span></div>
+              </div>
+              <div class="hs-team-folga">Folga: segunda, quinta e domingo</div>
+            </div>
+            <a href="#" class="hs-team-cta hs-wa-equipe" data-msg="Olá! Gostaria de agendar um horário com Aline Ferraz." target="_blank" rel="noopener">Agendar com Aline</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- HS:SECTIONS:INSERT -->
 </main>
 
@@ -266,6 +400,10 @@
 
   document.getElementById('hs-hero-wa').href = WA_HERO;
   document.querySelectorAll('.hs-wa-servico').forEach((el) => {
+    el.href = waLink(el.dataset.msg);
+  });
+
+  document.querySelectorAll('.hs-wa-equipe').forEach((el) => {
     el.href = waLink(el.dataset.msg);
   });
 
