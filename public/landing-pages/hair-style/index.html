@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hair Style — salão de beleza em Vila Madalena</title>
+<meta name="description" content="Hair Style: corte, coloração e tratamentos capilares em Vila Madalena, São Paulo. Agende com o especialista certo pelo WhatsApp." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --hs-bg: #FBF8F5;
+    --hs-text: #1C1412;
+    --hs-accent: #B24342;
+    --hs-accent-hover: #8E3231;
+    --hs-gold: #C9A227;
+    --hs-gold-dim: #A67C1F;
+    --hs-gold-label: #8A6F14;
+    --hs-panel: #F3EBE5;
+    --hs-body-muted: #574742;
+    --hs-body-mute2: #7A6660;
+    --hs-nav-muted: #4A3C38;
+    --hs-faint: #9A8681;
+    --hs-font-display: 'Anton', Impact, sans-serif;
+    --hs-font-serif: 'Cormorant Garamond', Georgia, serif;
+    --hs-font-body: 'Jost', sans-serif;
+    --hs-font-script: 'Parisienne', cursive;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--hs-bg); color: var(--hs-text); font-family: var(--hs-font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: var(--hs-accent); text-decoration: none; }
+  a:hover { color: var(--hs-accent-hover); }
+  img { max-width: 100%; display: block; }
+  @keyframes hs-float-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  [data-reveal] { opacity: 0; }
+  [data-reveal].is-visible { animation: hs-float-up 0.7s ease both; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] { opacity: 1 !important; animation: none !important; }
+  }
+
+  .hs-header { position: sticky; top: 0; z-index: 50; background: rgba(251,248,245,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(28,20,18,0.08); }
+  .hs-header-inner { max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .hs-logo { position: relative; display: inline-block; padding-bottom: 7px; font-family: var(--hs-font-display); font-size: 34px; line-height: 1; letter-spacing: 0.12em; color: var(--hs-accent); }
+  .hs-logo span.hs-top { display: block; margin-right: -0.12em; clip-path: inset(0 0 50% 0); }
+  .hs-logo span.hs-bottom { position: absolute; left: 0; top: 7px; clip-path: inset(50% 0 0 0); }
+  .hs-logo span.hs-script { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-9deg); font-family: var(--hs-font-script); font-size: 26px; line-height: 1; color: var(--hs-gold-dim); white-space: nowrap; -webkit-text-stroke: 1.5px var(--hs-bg); paint-order: stroke fill; }
+  .hs-nav { display: flex; align-items: center; gap: 30px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--hs-nav-muted); flex-wrap: wrap; }
+  .hs-nav a { color: var(--hs-nav-muted); }
+  .hs-btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--hs-accent); color: #fff; padding: 13px 22px; border-radius: 999px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; box-shadow: 0 8px 20px rgba(178,67,66,0.28); transition: background 0.2s ease; }
+  .hs-btn-primary:hover { background: var(--hs-accent-hover); color: #fff; }
+  .hs-btn-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--hs-gold); display: inline-block; }
+
+  .hs-footer { background: var(--hs-bg); padding: 60px 24px 40px; }
+  .hs-footer-inner { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; align-items: start; }
+  .hs-footer-desc { margin: 0; font-size: 14px; line-height: 1.65; color: var(--hs-body-mute2); max-width: 260px; }
+  .hs-footer-label { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--hs-gold-label); margin-bottom: 14px; }
+  .hs-footer-text { font-size: 14px; line-height: 1.9; color: var(--hs-body-muted); }
+  .hs-footer-bottom { max-width: 1240px; margin: 44px auto 0; padding-top: 22px; border-top: 1px solid rgba(28,20,18,0.1); display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--hs-faint); }
+
+  .hs-fab { position: fixed; right: 22px; bottom: 22px; z-index: 60; display: inline-flex; align-items: center; gap: 10px; background: var(--hs-accent); color: #fff; padding: 16px 24px; border-radius: 999px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 14px 34px rgba(178,67,66,0.4); transition: background 0.2s ease; }
+  .hs-fab:hover { background: var(--hs-accent-hover); color: #fff; }
+
+  /* HS:STYLES:INSERT */
+</style>
+</head>
+<body>
+
+<header class="hs-header">
+  <div class="hs-header-inner">
+    <a href="#top" class="hs-logo" aria-label="Hair Style">
+      <span class="hs-top">HAIR</span>
+      <span class="hs-bottom">HAIR</span>
+      <span class="hs-script">Style</span>
+    </a>
+    <nav class="hs-nav">
+      <a href="#servicos">Serviços</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#depoimentos">Depoimentos</a>
+    </nav>
+    <a href="#" id="hs-header-wa" class="hs-btn-primary" target="_blank" rel="noopener">
+      <span class="hs-btn-dot"></span>
+      Agendar no WhatsApp
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- HS:SECTIONS:INSERT -->
+</main>
+
+<footer class="hs-footer">
+  <div class="hs-footer-inner">
+    <div>
+      <a href="#top" class="hs-logo" style="font-size: 40px; margin-bottom: 18px;" aria-label="Hair Style">
+        <span class="hs-top">HAIR</span>
+        <span class="hs-bottom" style="top: 8px;">HAIR</span>
+        <span class="hs-script" style="font-size: 31px;">Style</span>
+      </a>
+      <p class="hs-footer-desc">Salão de beleza especializado em cor, corte e cuidado do fio.</p>
+    </div>
+    <div>
+      <div class="hs-footer-label">Horário</div>
+      <div class="hs-footer-text">Seg a sex · 09h – 20h<br />Sábado · 09h – 18h<br />Domingo · fechado</div>
+    </div>
+    <div>
+      <div class="hs-footer-label">Contato</div>
+      <div class="hs-footer-text">(11) 99999-0000<br />Rua das Palmeiras, 148<br />Vila Madalena, SP</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+      <div class="hs-footer-label" style="margin-bottom: 0;">Agendamento</div>
+      <a href="#" id="hs-footer-wa" class="hs-btn-primary" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="hs-footer-bottom">
+    <span>© 2026 Hair Style</span>
+    <span>Salão fictício · projeto de demonstração</span>
+  </div>
+</footer>
+
+<a href="#" id="hs-fab-wa" class="hs-fab" target="_blank" rel="noopener">
+  <span class="hs-btn-dot"></span>
+  Agendar
+</a>
+
+<script>
+  const WA_NUMBER = '5511999990000';
+  function waLink(text) {
+    return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  }
+  const WA_HERO = waLink('Olá! Vim pelo site e gostaria de agendar um horário.');
+  const WA_FINAL = waLink('Olá! Gostaria de verificar os horários disponíveis desta semana.');
+  document.getElementById('hs-header-wa').href = WA_HERO;
+  document.getElementById('hs-footer-wa').href = WA_FINAL;
+  document.getElementById('hs-fab-wa').href = WA_FINAL;
+
+  // HS:SCRIPT:INSERT
+</script>
+</body>
+</html>
