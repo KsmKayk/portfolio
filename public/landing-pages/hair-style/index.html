@@ -126,6 +126,22 @@
   .hs-team-cta { margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--hs-text); color: #fff; padding: 15px 20px; border-radius: 999px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.2s ease; }
   .hs-team-cta:hover { background: var(--hs-accent); color: #fff; }
 
+  .hs-galeria-head { margin-bottom: 40px; }
+  .hs-galeria-link { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--hs-accent); }
+  .hs-galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .hs-galeria-item { position: relative; aspect-ratio: 3/4; border-radius: 16px; overflow: hidden; background: #E8DDD5; }
+  .hs-galeria-item img { width: 100%; height: 100%; object-fit: cover; }
+  .hs-galeria-label { position: absolute; left: 12px; bottom: 12px; background: rgba(251,248,245,0.94); padding: 6px 13px; border-radius: 999px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--hs-text); }
+
+  .hs-depoimentos { background: var(--hs-text); color: var(--hs-panel); padding: 92px 24px; }
+  .hs-depoimentos-inner { max-width: 1240px; margin: 0 auto; }
+  .hs-depoimentos-eyebrow { font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--hs-gold); margin-bottom: 40px; }
+  .hs-depoimentos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+  .hs-depoimento { margin: 0; background: rgba(243,235,229,0.06); border: 1px solid rgba(201,162,39,0.24); border-radius: 20px; padding: 30px; }
+  .hs-depoimento-stars { color: var(--hs-gold); font-size: 15px; letter-spacing: 0.2em; margin-bottom: 16px; }
+  .hs-depoimento-quote { margin: 0 0 22px; font-family: var(--hs-font-serif); font-size: 22px; line-height: 1.45; font-style: italic; color: var(--hs-panel); }
+  .hs-depoimento-author { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #B8A49E; }
+
   /* HS:STYLES:INSERT */
 </style>
 </head>
@@ -350,6 +366,42 @@
     </div>
   </section>
 
+  <section id="galeria" class="hs-section">
+    <div data-reveal class="hs-section-head hs-galeria-head">
+      <h2 class="hs-h2">Trabalhos <em style="font-style: italic; color: var(--hs-accent);">recentes</em></h2>
+      <a href="#" id="hs-galeria-wa" class="hs-galeria-link" target="_blank" rel="noopener">Quero um resultado assim →</a>
+    </div>
+    <div class="hs-galeria-grid">
+      <div data-reveal class="hs-galeria-item"><img src="uploads/servico-mechas.jpg" alt="" loading="lazy" /><span class="hs-galeria-label">Balayage</span></div>
+      <div data-reveal class="hs-galeria-item"><img src="uploads/galeria-penteado.jpg" alt="" loading="lazy" /><span class="hs-galeria-label">Penteado de festa</span></div>
+      <div data-reveal class="hs-galeria-item"><img src="uploads/galeria-visual.jpg" alt="" loading="lazy" /><span class="hs-galeria-label">Mudança de visual</span></div>
+      <div data-reveal class="hs-galeria-item"><img src="uploads/servico-corte.jpg" alt="" loading="lazy" /><span class="hs-galeria-label">Corte & escova</span></div>
+    </div>
+  </section>
+
+  <section id="depoimentos" class="hs-depoimentos">
+    <div class="hs-depoimentos-inner">
+      <div class="hs-depoimentos-eyebrow">Quem já passou por aqui</div>
+      <div class="hs-depoimentos-grid">
+        <blockquote data-reveal class="hs-depoimento">
+          <div class="hs-depoimento-stars">★★★★★</div>
+          <p class="hs-depoimento-quote">Fui com o cabelo cheio de manchas de coloração caseira e saí com o loiro que eu queria há dois anos.</p>
+          <footer class="hs-depoimento-author">Marina S. · cliente desde 2023</footer>
+        </blockquote>
+        <blockquote data-reveal class="hs-depoimento">
+          <div class="hs-depoimento-stars">★★★★★</div>
+          <p class="hs-depoimento-quote">Agendei pelo WhatsApp num domingo e já saí com horário confirmado para a terça. Nunca esperei mais de 5 minutos na recepção.</p>
+          <footer class="hs-depoimento-author">Priscila A.</footer>
+        </blockquote>
+        <blockquote data-reveal class="hs-depoimento">
+          <div class="hs-depoimento-stars">★★★★★</div>
+          <p class="hs-depoimento-quote">Melhor corte masculino da região. O Thiago entende exatamente o que eu peço e ainda ensina como manter.</p>
+          <footer class="hs-depoimento-author">Eduardo M.</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
   <!-- HS:SECTIONS:INSERT -->
 </main>
 
@@ -406,6 +458,8 @@
   document.querySelectorAll('.hs-wa-equipe').forEach((el) => {
     el.href = waLink(el.dataset.msg);
   });
+
+  document.getElementById('hs-galeria-wa').href = waLink('Olá! Vi os trabalhos no site e queria um resultado parecido. Podem me ajudar?');
 
   // HS:SCRIPT:INSERT
 </script>
