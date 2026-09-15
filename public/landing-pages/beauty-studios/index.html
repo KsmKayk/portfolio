@@ -220,6 +220,31 @@
     </div>
   </section>
 
+  <section id="resultados" style="position:relative;z-index:4;background:#0b0b0c;padding:clamp(56px,10vh,120px) clamp(16px,4vw,56px);margin-top:clamp(40px,7vh,90px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(22px,4vw,56px);align-items:end;margin-bottom:clamp(30px,5vh,60px)">
+        <h2 data-bs-rise style="margin:0;color:#f4f2f0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(32px,5vw,72px);line-height:1.02;letter-spacing:-.02em">
+          Arraste e veja<br /><em style="font-style:italic">a diferença</em>
+        </h2>
+        <p data-bs-rise style="margin:0;font-size:14px;line-height:1.7;color:rgba(244,242,240,.62);max-width:40ch;font-weight:300">
+          Resultados reais de clientes, mesma luz e mesmo ângulo. Sem filtro e sem retoque.
+        </p>
+      </div>
+
+      <div data-bs-ba style="position:relative;width:100%;aspect-ratio:16/9;min-height:clamp(280px,46vh,520px);border-radius:22px;overflow:hidden;cursor:ew-resize;touch-action:none;background:#141415">
+        <div style="position:absolute;inset:0"><img src="assets/ba-depois.png" alt="Depois — mesma pessoa, mesma luz" style="width:100%;height:100%;object-fit:cover" /></div>
+        <div data-bs-ba-clip style="position:absolute;inset:0;clip-path:inset(0 50% 0 0)">
+          <img src="assets/ba-antes.png" alt="Antes — mesma pessoa, mesma luz" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div data-bs-ba-handle style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#e0a2bb;pointer-events:none;box-shadow:0 0 24px rgba(224,162,187,.6)">
+          <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:#f4f2f0;display:flex;align-items:center;justify-content:center;font-size:13px;color:#0b0b0c;letter-spacing:.05em">↔</span>
+        </div>
+        <span style="position:absolute;top:18px;left:18px;padding:7px 14px;border-radius:999px;background:rgba(11,11,12,.6);color:#f4f2f0;font-size:10px;letter-spacing:.26em;text-transform:uppercase;pointer-events:none">Antes</span>
+        <span style="position:absolute;top:18px;right:18px;padding:7px 14px;border-radius:999px;background:rgba(244,242,240,.9);color:#0b0b0c;font-size:10px;letter-spacing:.26em;text-transform:uppercase;pointer-events:none">Depois</span>
+      </div>
+    </div>
+  </section>
+
   <!-- BS:SECTIONS:INSERT -->
 </div>
 
