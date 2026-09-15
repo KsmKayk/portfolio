@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Andy Afrodite — conteúdo para marcas alternativas e góticas</title>
+<meta name="description" content="Andy Afrodite: modelo alternativa produzindo catálogo, reels e editoriais para marcas góticas, de piercing, tattoo e acessórios de nicho." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<script src="hero-particles.js"></script>
+<style>
+  :root {
+    --aa-bg: #07070a;
+    --aa-fg: #ece9e4;
+    --aa-accent: #ff4d8d;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--aa-bg); }
+  body { -webkit-font-smoothing: antialiased; font-family: 'Cormorant Garamond', Georgia, serif; color: var(--aa-fg); overflow-x: hidden; }
+  a { color: var(--aa-fg); text-decoration: none; }
+  a:hover { color: var(--aa-accent); }
+  img { max-width: 100%; display: block; }
+  ::selection { background: var(--aa-accent); color: var(--aa-bg); }
+
+  [data-reveal] { opacity: 0; transform: translateY(34px); transition: opacity 1.1s cubic-bezier(.16,1,.3,1), transform 1.1s cubic-bezier(.16,1,.3,1); }
+  [data-reveal].is-in { opacity: 1; transform: none; }
+
+  @keyframes riseIn { from { opacity: 0; transform: translateY(60px) scale(.98); filter: blur(14px); } to { opacity: 1; transform: none; filter: blur(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes halo { 0%, 100% { opacity: .45; transform: scale(1); } 50% { opacity: .75; transform: scale(1.06); } }
+  @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .aa-nav-link { color: rgba(236,233,228,.62); }
+  .aa-nav-link:hover { color: var(--aa-accent); }
+  .aa-nav-cta { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(236,233,228,.28); padding: 10px 18px; color: var(--aa-fg); }
+  .aa-nav-cta:hover { border-color: var(--aa-accent); color: var(--aa-accent); }
+  .aa-btn-solid { display: inline-flex; align-items: center; gap: 12px; background: var(--aa-fg); color: var(--aa-bg); padding: 17px 30px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+  .aa-btn-solid:hover { background: var(--aa-accent); color: var(--aa-bg); }
+  .aa-btn-outline { display: inline-flex; align-items: center; gap: 12px; border: 1px solid rgba(236,233,228,.26); padding: 17px 30px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(236,233,228,.82); }
+  .aa-btn-outline:hover { border-color: rgba(236,233,228,.7); }
+
+  .aa-filter-btn { cursor: pointer; padding: 10px 16px; font-family: 'Space Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; transition: all .3s ease; background: transparent; color: rgba(236,233,228,.6); border: 1px solid rgba(236,233,228,.2); }
+  .aa-filter-btn.is-active { background: var(--aa-fg); color: var(--aa-bg); border-color: var(--aa-fg); }
+
+  .aa-faq-item { border-top: 1px solid rgba(236,233,228,.12); }
+  .aa-faq-head { width: 100%; cursor: pointer; background: transparent; border: 0; color: rgba(236,233,228,.82); display: flex; align-items: center; gap: 16px; text-align: left; padding: 22px 0; transition: color .3s ease; font-family: inherit; font-size: inherit; }
+  .aa-faq-item.is-open .aa-faq-head { color: var(--aa-fg); }
+  .aa-faq-icon { flex: none; font-family: 'Space Mono', monospace; font-size: 16px; color: rgba(236,233,228,.4); transform: rotate(0deg); transition: transform .4s cubic-bezier(.16,1,.3,1), color .3s ease; }
+  .aa-faq-item.is-open .aa-faq-icon { color: var(--aa-accent); transform: rotate(45deg); }
+  .aa-faq-body { overflow: hidden; max-height: 0; opacity: 0; transition: max-height .55s cubic-bezier(.16,1,.3,1), opacity .4s ease; }
+  .aa-faq-item.is-open .aa-faq-body { max-height: 340px; opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] { transition: none; }
+    .aa-hero-anim { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div style="position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.5;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.035) 1px, transparent 0);background-size:3px 3px"></div>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,4vw,56px);backdrop-filter:blur(14px);background:linear-gradient(180deg,rgba(7,7,10,.82),rgba(7,7,10,0))">
+  <a href="#topo" style="display:flex;align-items:center;gap:14px">
+    <img src="andy-logo.svg" alt="Andy Afrodite" style="width:38px;height:38px;display:block" />
+    <span style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--aa-fg)">Andy Afrodite</span>
+  </a>
+  <nav style="display:flex;align-items:center;gap:clamp(16px,2.4vw,34px);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;text-transform:uppercase">
+    <a href="#sobre" class="aa-nav-link">Sobre</a>
+    <a href="#galeria" class="aa-nav-link">Galeria</a>
+    <a href="#faq" class="aa-nav-link">FAQ</a>
+    <a href="#contato" class="aa-nav-cta">Orçamento</a>
+  </nav>
+</header>
+
+<aside style="position:fixed;left:clamp(12px,2.2vw,34px);top:0;bottom:0;z-index:45;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;pointer-events:none">
+  <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.3em;color:rgba(236,233,228,.4)">ΑΡΧΗ</span>
+  <div style="position:relative;width:1px;height:min(46vh,420px);background:rgba(236,233,228,.14);overflow:hidden">
+    <div id="aa-rail-fill" style="position:absolute;top:0;left:0;width:100%;height:100%;transform-origin:top;transform:scaleY(0);background:linear-gradient(180deg,#ece9e4,#ff4d8d)"></div>
+  </div>
+  <div id="aa-rail-glyph" style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:var(--aa-accent);writing-mode:vertical-rl;text-orientation:upright">Α</div>
+  <span id="aa-rail-pct" style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.18em;color:rgba(236,233,228,.5)">00</span>
+</aside>
+
+<div style="background:var(--aa-bg);color:var(--aa-fg);overflow-x:hidden;position:relative">
+  <!-- AA:SECTIONS:INSERT -->
+
+  <footer style="border-top:1px solid rgba(236,233,228,.1);padding:36px clamp(28px,6vw,90px) 40px clamp(64px,9vw,140px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="andy-logo.svg" alt="" style="width:30px;height:30px;display:block;opacity:.85" />
+      <span style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.38em;color:rgba(236,233,228,.6)">ANDY AFRODITE</span>
+    </div>
+    <span style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(236,233,228,.35)">© 2026 · Modelo alternativa · Brasil</span>
+    <a href="#topo" style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(236,233,228,.5)">Voltar ao topo ↑</a>
+  </footer>
+</div>
+
+<script>
+  var WA_NUMBER = '5511999999999';
+  function waLink(text) {
+    return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  }
+
+  // AA:SCRIPT:INSERT
+</script>
+</body>
+</html>
