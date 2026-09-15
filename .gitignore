@@ -48,6 +48,12 @@ public/landing-pages/*/*.dc.html
 public/landing-pages/*/support.js
 public/landing-pages/*/.thumbnail
 public/landing-pages/*/image-slot.js
+
+# Unreferenced upload assets left behind from Claude Design canvas source (kept on disk for
+# possible manual use, not needed by the shipped static pages)
+public/landing-pages/andy-afrodite/uploads/
+public/landing-pages/beauty-studios/uploads/pasted-*.png
+public/landing-pages/beauty-studios/uploads/antesedepois.png
 .ds-sync
 ds-bundle/*
 /ds-bundle/
