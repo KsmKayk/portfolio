@@ -43,7 +43,11 @@ next-env.d.ts
 portifolio-handoff.zip
 .design-handoff
 
-# Claude Design canvas source artifacts (superseded by the static index.html export)
-public/landing-pages/rock/Rock For You v2.dc.html
-public/landing-pages/rock/support.js
-public/landing-pages/rock/.thumbnail
+# Claude Design canvas source artifacts (superseded by each landing page's static index.html export)
+public/landing-pages/*/*.dc.html
+public/landing-pages/*/support.js
+public/landing-pages/*/.thumbnail
+public/landing-pages/*/image-slot.js
+.ds-sync
+ds-bundle/*
+/ds-bundle/
