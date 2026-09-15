@@ -40,4 +40,12 @@ export const landingPages: LandingPage[] = [
     logo: '/landing-pages/hair-style/logo.svg',
     url: '/landing-pages/hair-style',
   },
+  {
+    slug: 'andy-afrodite',
+    title: 'Andy Afrodite',
+    desc: 'Portfólio de conteúdo para modelo alternativa: catálogo, reels e editoriais para marcas góticas e de nicho, com galeria filtrável por categoria.',
+    thumbnail: '/landing-pages/andy-afrodite/thumbnail.webp',
+    logo: '/landing-pages/andy-afrodite/andy-logo.svg',
+    url: '/landing-pages/andy-afrodite',
+  },
 ];
