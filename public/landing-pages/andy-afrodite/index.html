@@ -207,7 +207,21 @@
     </div>
   </section>
 
-  <!-- AA:SECTIONS:INSERT -->
+  <section id="contato" style="position:relative;padding:clamp(90px,12vw,170px) clamp(28px,6vw,90px) clamp(70px,9vw,120px) clamp(64px,9vw,140px);border-top:1px solid rgba(236,233,228,.08);overflow:hidden">
+    <div style="position:absolute;left:50%;top:-30%;transform:translateX(-50%);width:min(80vw,900px);height:min(80vw,900px);border-radius:50%;background:radial-gradient(circle,rgba(255,77,141,.12),transparent 68%);filter:blur(40px);pointer-events:none;animation:halo 10s ease-in-out infinite"></div>
+    <div data-reveal style="position:relative;text-align:center;max-width:860px;margin:0 auto">
+      <div style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:.5em;color:rgba(255,77,141,.8);margin-bottom:26px">ΕΡΩΣ · ΤΕΧΝΗ</div>
+      <h2 style="margin:0 0 26px;font-family:'Cinzel',serif;font-weight:400;font-size:clamp(32px,5.4vw,72px);line-height:1.08">Sua próxima<br />coleção pede<br /><span style="color:rgba(236,233,228,.45)">uma imagem forte</span></h2>
+      <p style="margin:0 auto 42px;max-width:50ch;font-size:clamp(17px,1.5vw,21px);line-height:1.62;color:rgba(236,233,228,.66)">Me conta o que a loja precisa — quantidade de peças, prazo e onde as imagens vão rodar. Devolvo proposta e datas disponíveis.</p>
+      <a href="#" id="aa-contato-wa" target="_blank" rel="noopener" class="aa-btn-solid" style="padding:20px 40px;font-size:12px;letter-spacing:.22em">Chamar no WhatsApp <span style="font-size:15px">→</span></a>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(18px,4vw,50px);margin-top:52px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase">
+        <a href="#contato" style="color:rgba(236,233,228,.6);border-bottom:1px solid rgba(236,233,228,.2);padding-bottom:5px">Instagram @andyafrodite</a>
+        <a href="#contato" style="color:rgba(236,233,228,.6);border-bottom:1px solid rgba(236,233,228,.2);padding-bottom:5px">TikTok @andyafrodite</a>
+        <a href="#contato" style="color:rgba(236,233,228,.6);border-bottom:1px solid rgba(236,233,228,.2);padding-bottom:5px">contato@andyafrodite.com</a>
+      </div>
+      <p style="margin:22px 0 0;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:rgba(255,77,141,.55)">[ links provisórios — me envie os reais ]</p>
+    </div>
+  </section>
 
   <footer style="border-top:1px solid rgba(236,233,228,.1);padding:36px clamp(28px,6vw,90px) 40px clamp(64px,9vw,140px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
     <div style="display:flex;align-items:center;gap:14px">
@@ -313,6 +327,41 @@
     });
   }
   renderAaFaq();
+
+  document.getElementById('aa-contato-wa').href = waLink('Olá! Vim pelo site e gostaria de um orçamento.');
+
+  var aaReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var aaRevealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        aaRevealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-reveal]'), function (el) {
+    if (aaReduceMotion) { el.classList.add('is-in'); } else { aaRevealObserver.observe(el); }
+  });
+
+  var AA_GLYPHS = ["Α", "Φ", "Ρ", "Ο", "Δ", "Ι", "Τ", "Η"];
+  var aaRailFill = document.getElementById('aa-rail-fill');
+  var aaRailGlyph = document.getElementById('aa-rail-glyph');
+  var aaRailPct = document.getElementById('aa-rail-pct');
+  var aaRailRaf = null;
+  function aaOnScroll() {
+    if (aaRailRaf) return;
+    aaRailRaf = requestAnimationFrame(function () {
+      aaRailRaf = null;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      aaRailFill.style.transform = 'scaleY(' + p + ')';
+      aaRailPct.textContent = String(Math.round(p * 100)).padStart(2, '0');
+      var g = AA_GLYPHS[Math.min(AA_GLYPHS.length - 1, Math.floor(p * AA_GLYPHS.length))];
+      if (aaRailGlyph.textContent !== g) aaRailGlyph.textContent = g;
+    });
+  }
+  window.addEventListener('scroll', aaOnScroll, { passive: true });
+  aaOnScroll();
 
   // AA:SCRIPT:INSERT
 </script>
