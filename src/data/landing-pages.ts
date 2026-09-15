@@ -32,4 +32,12 @@ export const landingPages: LandingPage[] = [
     logo: '/landing-pages/rock/logo.svg',
     url: '/landing-pages/rock',
   },
+  {
+    slug: 'hair-style',
+    title: 'Hair Style',
+    desc: 'Landing page para salão de beleza com agendamento por profissional, agenda da semana, catálogo de serviços e depoimentos.',
+    thumbnail: '/landing-pages/hair-style/thumbnail.webp',
+    logo: '/landing-pages/hair-style/logo.svg',
+    url: '/landing-pages/hair-style',
+  },
 ];
