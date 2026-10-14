@@ -18,3 +18,12 @@ export type SlideKind =
 export type StackName = 'Node.js' | 'TypeScript' | 'Python' | 'PostgreSQL' | 'Docker' | 'Oracle';
 
 export type Theme = 'dark' | 'light';
+
+export type LinkIcon = 'portfolio' | 'godrinking' | 'github' | 'medium' | 'linkedin';
+
+export interface LinktreeLink {
+  label: string;
+  desc: string;
+  href: string;
+  icon: LinkIcon;
+}

@@ -8,4 +8,5 @@ export const CONTACT = {
   github: 'https://github.com/KsmKayk',
   linkedin: 'https://www.linkedin.com/in/kaykmascarenhas/',
   instagram: 'https://www.instagram.com/kayk.mascarenhas/',
+  medium: 'https://1ksmkayk.medium.com/',
 };
